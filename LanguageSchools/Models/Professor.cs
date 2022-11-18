@@ -14,6 +14,10 @@ namespace LanguageSchools.Models
 
         public User User { get => user; set => user = value; }
         public string UserId { get; set; }
+        public School SchoolT { get; set; }
+        public List<Language> Languages{ get; set; }
+
+        public List<Meeting> Meetings { get; set; }
 
         public override string ToString()
         {

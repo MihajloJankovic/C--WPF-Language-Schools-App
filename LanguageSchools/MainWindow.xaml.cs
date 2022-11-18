@@ -33,6 +33,7 @@ namespace LanguageSchools
             var professorsWindow = new ShowProfessorsWindow();
             professorsWindow.Show();
             this.Hide();
+
         }
     }
 }
