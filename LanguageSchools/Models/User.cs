@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Nodes;
 using System.Threading.Tasks;
 
 namespace LanguageSchools.Models
@@ -23,6 +24,28 @@ namespace LanguageSchools.Models
 
         public User() {
             IsActive = true;
+            Gender = EGender.MALE;
+            UserType = EUserType.STUDENT;
+           // Address.Id = 5;
+          //  Address.Street = "ulica";
+          //  Address.StreetNumber = "5";
+         //   Address.City = "beska";
+          //  Address.Country = "srbija";
+        }
+        public User(String Email, String Password, String FirstName, String LastName, String JMBG)
+        {   
+            this.IsActive = true;
+            this.Email = Email;
+            this.Password = Password;
+            this.FirstName = FirstName;
+            this.LastName = LastName;
+            this.JMBG = JMBG;
+            this.Address = new Address();
+            this.Address.Id = 5;
+            this.Address.Street = "fruskgorska";
+            this.Address.StreetNumber = "5";
+            this.Address.City = "beska";
+            this.Address.Country = "srbija";
         }
 
         public override string ToString()

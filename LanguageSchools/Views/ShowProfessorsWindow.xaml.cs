@@ -23,7 +23,7 @@ namespace LanguageSchools.Views
         public ShowProfessorsWindow()
         {
             InitializeComponent();
-         //   List<User> users = Data.Instance.ProfessorService.GetAll()
+         // List<User> users = Data.Instance.ProfessorService.GetAll()
           //      .Select(p => p.User).ToList();
          //   dgProfessors.ItemsSource = users;
         }

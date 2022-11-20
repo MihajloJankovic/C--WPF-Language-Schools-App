@@ -14,10 +14,10 @@ namespace LanguageSchools.Services
     {
         private IUserRepository repostory;
 
-        //public UserService()
-        //{   
-        //    repostory = new UserRepository();
-        //}
+        public UserService()
+        {
+            repostory = new UserRepository();
+        }
 
         //public List<User> GetActiveUsers()
         //{
@@ -38,10 +38,10 @@ namespace LanguageSchools.Services
             repostory.Add(user);
         }
 
-        //public void Update(string email, User user)
-        //{
-        //    repostory.Update(email, user);
-        //}
+    //    public void Update(string email, User user)
+      //  {
+       //     repostory.Update();
+       // }
 
         //public void Delete(string email)
         //{
@@ -49,3 +49,4 @@ namespace LanguageSchools.Services
         //}
     }
 }
+

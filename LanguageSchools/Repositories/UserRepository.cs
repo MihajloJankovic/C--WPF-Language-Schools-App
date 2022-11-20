@@ -19,8 +19,16 @@ namespace LanguageSchools.Repositories
         {
             SqlConnection con = new SqlConnection("Data Source=MIHAJLO;Initial Catalog=baza_POP;Integrated Security=True");
             con.Open();
-            SqlCommand cmd = new SqlCommand("INSERT INTO user VALUES (@Language);", con);
-            cmd.Parameters.AddWithValue("Language", newUser.Email);
+            SqlCommand cmd = new SqlCommand("INSERT INTO Usercina VALUES (@Email,@Password,@FirstName,@LastName,@JMBG,@gender,@usertype,@address,@isactive);", con);
+            cmd.Parameters.AddWithValue("@Email", user.Email );
+            cmd.Parameters.AddWithValue("@Password", user.Password );
+            cmd.Parameters.AddWithValue("@FirstName", user.FirstName );
+            cmd.Parameters.AddWithValue("@LastName", user.LastName );
+            cmd.Parameters.AddWithValue("@Jmbg", user.JMBG);
+            cmd.Parameters.AddWithValue("@Gender", user.Gender.ToString() );
+            cmd.Parameters.AddWithValue("@UserType", user.UserType.ToString() );
+            cmd.Parameters.AddWithValue("@Address", user.Address.Id );
+            cmd.Parameters.AddWithValue("@IsActive", user.IsActive.ToString());
             cmd.ExecuteNonQuery();
             con.Close();
             
@@ -41,10 +49,24 @@ namespace LanguageSchools.Repositories
         //    
         //}
 
-        //public void Update(string email, User updatedUser)
-        //{
+        public void Update(User user)
+        {
+            SqlConnection con = new SqlConnection("Data Source=MIHAJLO;Initial Catalog=baza_POP;Integrated Security=True");
+            con.Open();
+            SqlCommand cmd = new SqlCommand("update Usercina set email = @Email,Password=@Password,FirstName=@FirstName,LastName=@LastName,gender=@gender,usertype=@usertype,address=@address,isactive=@isactive);", con);
+            cmd.Parameters.AddWithValue("@Email", user.Email);
+            cmd.Parameters.AddWithValue("@Password", user.Password);
+            cmd.Parameters.AddWithValue("@FirstName", user.FirstName);
+            cmd.Parameters.AddWithValue("@LastName", user.LastName);
+           // cmd.Parameters.AddWithValue("@Jmbg", user.JMBG);
+            cmd.Parameters.AddWithValue("@Gender", user.Gender.ToString());
+            cmd.Parameters.AddWithValue("@UserType", user.UserType.ToString());
+            cmd.Parameters.AddWithValue("@Address", user.Address.Id);
+            cmd.Parameters.AddWithValue("@IsActive", user.IsActive.ToString());
+            cmd.ExecuteNonQuery();
+            con.Close();
 
-        //}
+        }
 
   
     }

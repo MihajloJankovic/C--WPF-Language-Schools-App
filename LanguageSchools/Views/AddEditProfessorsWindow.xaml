@@ -64,8 +64,29 @@
         <ComboBox Grid.Column="1" Grid.Row="5" Name="cbGender" Margin="5,5,5,5"  Text="{Binding Gender}">
         </ComboBox>
 
-        <Button Grid.Column="1" Grid.Row="6" Height="50" Width="100" Margin="117,149,122,35">Cancel</Button>
+        <Button x:Name="canc" Grid.Column="1" Grid.Row="6" Height="50" Width="100" Margin="117,149,122,35">Cancel</Button>
         <Button Name="btnSave" Grid.Column="1" Grid.Row="6" Height="50" Width="100" Margin="222,149,17,35" Click="btnSave_Click">Save</Button>
+        <Button x:Name="next" Grid.Column="1" Content="Next" HorizontalAlignment="Left" Margin="225,157,0,0" Grid.Row="6" VerticalAlignment="Top" Height="50" Width="104" Click="Button_Click"/>
+        <TextBox Grid.Column="1" x:Name="emailx"  Margin="5,6,4,4" Text=""/>
+        <TextBox Grid.Column="1" Grid.Row="1" x:Name="passwordx"  Margin="5,5,5,5" Text=""/>
+        <TextBox Grid.Column="1" Grid.Row="2" x:Name="firstnamex"  Margin="5,5,5,5" Text=""/>
+        <TextBox Grid.Column="1" Grid.Row="3" x:Name="lastnamex"  Margin="5,5,5,5" Text=""/>
+        <Label Grid.Column="0" Grid.Row="0" 
+            x:Name="Street__" 
+            Content="Street:"
+            HorizontalAlignment="Left" Width="41" Margin="64,0,0,0"/>
+        <Label Grid.Column="0" Grid.Row="1" 
+            x:Name="Number_" 
+            Content="Street Number:"
+            HorizontalAlignment="Left" Width="62" Margin="43,0,0,0"/>
+        <Label Grid.Column="0" Grid.Row="2" 
+            x:Name="Country" 
+            Content="Country:"
+            HorizontalAlignment="Left" Width="67" Margin="38,0,0,0"/>
+        <Label Grid.Column="0" Grid.Row="3" 
+            x:Name="City" 
+            Content="City:"
+            HorizontalAlignment="Left" Width="66" Margin="39,0,0,0"/>
 
     </Grid>
 </Window>
