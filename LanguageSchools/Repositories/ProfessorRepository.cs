@@ -14,29 +14,29 @@ namespace LanguageSchools.Repositories
     {
         
 
-        public void Add(Professor professor)
-        {
-           
-        }
+        //public void Add(Professor professor)
+        //{
+        //   
+        //}
 
-        public void Delete(string email)
-        {
-            
-        }
-        public void Update(string email, Professor updatedProfessor)
-        {
-          
-        }
+        //public void Delete(string email)
+        //{
+        //    
+        //}
+        //public void Update(string email, Professor updatedProfessor)
+        //{
+        //  
+        //}
 
-        public List<Professor> GetAll()
-        {
-            
-        }
+        //public List<Professor> GetAll()
+        //{
+        //    
+        //}
 
-        public Professor GetById(string email)
-        {
-           
-        }
+        //public Professor GetById(string email)
+        //{
+        //   
+        //}
 
        
 

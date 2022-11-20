@@ -29,25 +29,25 @@ namespace LanguageSchools.Models
             }
         }
 
-        public void Initialize()
-        {
-          //inicijalizacija
-        }
+        //public void Initialize()
+        //{
+        //  //inicijalizacija
+        //}
 
-        public void LoadData()
-        {
-           // za sada prazno 
-        }
+        //public void LoadData()
+        //{
+        //   // za sada prazno 
+        //}
 
-        private List<User> LoadUsers()
-        {
-            //baza 
-        }
+        //private List<User> LoadUsers()
+        //{
+        //    //baza 
+        //}
 
-        private List<Professor> LoadProfessors()
-        {
-            //baza
-         
-        }
+        //private List<Professor> LoadProfessors()
+        //{
+        //    //baza
+        // 
+        //}
     }
 }

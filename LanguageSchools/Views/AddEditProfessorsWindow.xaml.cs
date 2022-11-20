@@ -12,6 +12,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using LanguageSchools.Repositories;
+using System.Data.SqlClient;
 
 namespace LanguageSchools.Views
 {
@@ -53,7 +55,9 @@ namespace LanguageSchools.Views
             newUser.JMBG = txtJMBG.Text;
             newUser.LastName = txtLastName.Text;
             newUser.Password = txtPassword.Text;
-            Data.Instance.ProfessorService.Add(newUser);
+           
+            Data.Instance.UserService.Add(newUser);
+           
 
             DialogResult = true;
             Close();

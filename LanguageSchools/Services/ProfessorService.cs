@@ -14,55 +14,55 @@ namespace LanguageSchools.Services
         private IProfessorRepository professorRepository;
         private IUserRepository userRepository;
 
-        public ProfessorService()
-        {
-            professorRepository = new ProfessorRepository();
-            userRepository = new UserRepository();
-        }
+        //public ProfessorService()
+        //{
+        //    professorRepository = new ProfessorRepository();
+        //    userRepository = new UserRepository();
+        //}
 
-        public Professor GetById(string email)
-        {
-            return professorRepository.GetById(email);
-        }
-        
-        public List<Professor> GetAll()
-        {
-            return professorRepository.GetAll();
-        }
+        //public Professor GetById(string email)
+        //{
+        //    return professorRepository.GetById(email);
+        //}
+        //
+        //public List<Professor> GetAll()
+        //{
+        //    return professorRepository.GetAll();
+        //}
 
-        public List<Professor> GetActiveProfessors()
-        {
-            // baza
-        }
-        public void Add(User user)
-        {
-            userRepository.Add(user);
+        //public List<Professor> GetActiveProfessors()
+        //{
+        //    // baza
+        //}
+        //public void Add(User user)
+        //{
+        //    userRepository.Add(user);
 
-            var professor = new Professor
-            {
-                User = user,
-                UserId = user.Email
-               
-            };
+        //    //var professor = new Professor
+        //    //{
+        //    //    User = user,
+        //    //    UserId = user.Email
+        //    //   
+        //   // };
 
-            professorRepository.Add(professor);
-        }
+        //   // professorRepository.Add(professor);
+        //}
 
-        public void Update(string email, Professor professor)
-        {
-            userRepository.Update(email, professor.User);
-            professorRepository.Update(email, professor);
-        }
+        //public void Update(string email, Professor professor)
+        //{
+        //    userRepository.Update(email, professor.User);
+        //    professorRepository.Update(email, professor);
+        //}
 
-        public void Delete(string email)
-        {
-            userRepository.Delete(email);
-            professorRepository.Delete(email);
-        }
+        //public void Delete(string email)
+        //{
+        //    userRepository.Delete(email);
+        //    professorRepository.Delete(email);
+        //}
 
-        public List<User> ListAllStudents()
-        {
-          //
-        }
+        //public List<User> ListAllStudents()
+        //{
+        //  //
+        //}
     }
 }

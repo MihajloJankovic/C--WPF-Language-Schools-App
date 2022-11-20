@@ -1,4 +1,5 @@
 ﻿using LanguageSchools.Models;
+using LanguageSchools.Repositories;
 using LanguageSchools.Views;
 using System;
 using System.Collections.Generic;
@@ -25,7 +26,7 @@ namespace LanguageSchools
         public MainWindow()
         {
             InitializeComponent();
-            Data.Instance.LoadData();
+         //   Data.Instance.LoadData();
         }
 
         private void btnStart_Click(object sender, RoutedEventArgs e)
@@ -33,6 +34,7 @@ namespace LanguageSchools
             var professorsWindow = new ShowProfessorsWindow();
             professorsWindow.Show();
             this.Hide();
+            
 
         }
     }

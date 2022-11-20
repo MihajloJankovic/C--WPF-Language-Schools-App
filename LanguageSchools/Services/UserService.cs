@@ -14,38 +14,38 @@ namespace LanguageSchools.Services
     {
         private IUserRepository repostory;
 
-        public UserService()
-        {   
-            repostory = new UserRepository();
-        }
+        //public UserService()
+        //{   
+        //    repostory = new UserRepository();
+        //}
 
-        public List<User> GetActiveUsers()
-        {
-           
-        }
-        public User GetUserById(String email)
-        {
+        //public List<User> GetActiveUsers()
+        //{
+        //   
+        //}
+        //public User GetUserById(String email)
+        //{
 
-        }
+        //}
 
-        public List<User> GetAll()
-        {
-            return repostory.GetAll();
-        }
+        //public List<User> GetAll()
+        //{
+        //    return repostory.GetAll();
+        //}
 
         public void Add(User user)
         {
             repostory.Add(user);
         }
 
-        public void Update(string email, User user)
-        {
-            repostory.Update(email, user);
-        }
+        //public void Update(string email, User user)
+        //{
+        //    repostory.Update(email, user);
+        //}
 
-        public void Delete(string email)
-        {
-            repostory.Delete(email);
-        }
+        //public void Delete(string email)
+        //{
+        //    repostory.Delete(email);
+        //}
     }
 }
