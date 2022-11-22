@@ -9,7 +9,7 @@ namespace LanguageSchools.Services
 {
     interface IUserService
     {
-    //    List<User> GetAll();
+       List<User> GetAll();
    //     List<User> GetActiveUsers();
         void Add(User user);
    //     User GetUserById(String email);

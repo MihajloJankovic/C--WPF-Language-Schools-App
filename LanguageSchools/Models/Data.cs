@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
+using LanguageSchools.Repositories;
 using LanguageSchools.Services;
 
 namespace LanguageSchools.Models
@@ -10,8 +11,11 @@ namespace LanguageSchools.Models
     sealed class Data
     {
         private static readonly Data instance = new Data();
-        public IUserService UserService { get; set; }
-        public IProfessorService ProfessorService { get; set; }
+        public UserService UserService { get; set; }
+        public ProfessorService ProfessorService { get; set; }
+        public AddressService AddressService { get; set; }
+        public SchoolService SchoolService { get; set; }
+        public LanguageRepository languageRepository { get; set; }
 
         static Data() { }
 
@@ -19,6 +23,9 @@ namespace LanguageSchools.Models
         {
             UserService = new UserService();
             ProfessorService = new ProfessorService();
+            AddressService = new AddressService();
+            SchoolService = new SchoolService();
+            languageRepository = new LanguageRepository();
         }
 
         public static Data Instance
@@ -29,25 +36,10 @@ namespace LanguageSchools.Models
             }
         }
 
-        //public void Initialize()
-        //{
-        //  //inicijalizacija
-        //}
+        public void Initialize()
+        {
+         
+        }
 
-        //public void LoadData()
-        //{
-        //   // za sada prazno 
-        //}
-
-        //private List<User> LoadUsers()
-        //{
-        //    //baza 
-        //}
-
-        //private List<Professor> LoadProfessors()
-        //{
-        //    //baza
-        // 
-        //}
     }
 }

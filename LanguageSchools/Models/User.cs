@@ -24,8 +24,8 @@ namespace LanguageSchools.Models
 
         public User() {
             IsActive = true;
-            Gender = EGender.MALE;
-            UserType = EUserType.STUDENT;
+           
+        
            // Address.Id = 5;
           //  Address.Street = "ulica";
           //  Address.StreetNumber = "5";

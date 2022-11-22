@@ -9,10 +9,10 @@ namespace LanguageSchools.Services
 {
     interface IProfessorService
     {
-     //   List<Professor> GetAll();
+        List<Professor> GetAll();
      //   Professor GetById(string email);
     //    List<Professor> GetActiveProfessors();
-    //    void Add(User professor);
+        void Add(Professor professor);
    //     void Update(string email, Professor professor);
   //      void Delete(string email);
   //      List<User> ListAllStudents();

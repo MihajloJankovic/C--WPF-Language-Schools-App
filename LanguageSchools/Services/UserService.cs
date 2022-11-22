@@ -28,20 +28,21 @@ namespace LanguageSchools.Services
 
         //}
 
-        //public List<User> GetAll()
-        //{
-        //    return repostory.GetAll();
-        //}
+        public List<User> GetAll()
+        {
+            return repostory.GetAll();
+        }
 
         public void Add(User user)
         {
             repostory.Add(user);
         }
 
-    //    public void Update(string email, User user)
-      //  {
-       //     repostory.Update();
-       // }
+          public void Update(User user)
+        {
+
+            repostory.Update(user);
+        }
 
         //public void Delete(string email)
         //{

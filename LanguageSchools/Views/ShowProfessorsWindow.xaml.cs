@@ -23,9 +23,8 @@ namespace LanguageSchools.Views
         public ShowProfessorsWindow()
         {
             InitializeComponent();
-         // List<User> users = Data.Instance.ProfessorService.GetAll()
-          //      .Select(p => p.User).ToList();
-         //   dgProfessors.ItemsSource = users;
+            List<Professor> users = Data.Instance.ProfessorService.GetAll().ToList();
+            dgProfessors.ItemsSource = users;
         }
 
         private void miAddProfessor_Click(object sender, RoutedEventArgs e)
@@ -36,9 +35,8 @@ namespace LanguageSchools.Views
 
             if ((bool)successeful)
             {
-             //   List<User> users = Data.Instance.ProfessorService.GetAll()
-             //   .Select(p => p.User).ToList();
-             //   dgProfessors.ItemsSource = users;
+                List<Professor> users = Data.Instance.ProfessorService.GetAll();
+                dgProfessors.ItemsSource = users;
             }
         }
 
@@ -53,9 +51,8 @@ namespace LanguageSchools.Views
 
                 if ((bool)successful)
                 {
-                   // List<User> users = Data.Instance.ProfessorService.GetAll()
-                   // .Select(p => p.User).ToList();
-                  //  dgProfessors.ItemsSource = users;
+                    List<Professor> users = Data.Instance.ProfessorService.GetAll();
+                    dgProfessors.ItemsSource = users;
                 }
             }
         }

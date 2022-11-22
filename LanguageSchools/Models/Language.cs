@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LanguageSchools.Models
 {
-    internal class Language
+    public class Language
     {
         public string Jezik { get; set; }
 

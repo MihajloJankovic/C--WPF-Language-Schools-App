@@ -11,13 +11,15 @@ namespace LanguageSchools.Services
 {
     class ProfessorService : IProfessorService
     {
-        private IProfessorRepository professorRepository;
-        private IUserRepository userRepository;
+        private ProfessorRepository professorRepository;
+        private UserRepository userRepository;
+        private SchoolRepository schoolRepository;
 
         public ProfessorService()
         {
             professorRepository = new ProfessorRepository();
             userRepository = new UserRepository();
+            schoolRepository = new SchoolRepository();
         }
 
   //      public Professor GetById(string email)
@@ -25,28 +27,21 @@ namespace LanguageSchools.Services
        //     return professorRepository.GetById(email);
        // }
         
-        //public List<Professor> GetAll()
-        //{
-        //    return professorRepository.GetAll();
-        //}
+        public List<Professor> GetAll()
+        {
+            return professorRepository.GetAll();
+        }
 
         //public List<Professor> GetActiveProfessors()
         //{
         //    // baza
         //}
-        //public void Add(User user)
-       // {
-       //     userRepository.Add(user);
-
-      //    var professor = new Professor
-        //   {
-       //        User = user,
-       //        UserId = user.Email
-          
-       //    };
-
-        //    professorRepository.Add(professor);
-       // }
+        public void Add(Professor professor)
+        {
+            userRepository.Add(professor.User);
+           professorRepository.Add(professor);
+        
+        }
 
         //public void Update(string email, Professor professor)
         //{
