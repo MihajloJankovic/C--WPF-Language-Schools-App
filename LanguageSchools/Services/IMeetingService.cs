@@ -8,5 +8,6 @@ namespace LanguageSchools.Services
 {
      interface IMeetingService
     {
+
     }
 }

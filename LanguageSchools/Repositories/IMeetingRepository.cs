@@ -10,5 +10,8 @@ namespace LanguageSchools.Repositories
      interface IMeetingRepository
     {
         List<Meeting> GetByProfessor(int id);
+        void AddToProfessor(Professor professor);
+        public void Update(Professor pera);
+        
     }
 }

@@ -10,7 +10,9 @@ namespace LanguageSchools.Repositories
     interface IProfessorRepository
     {
         List<Professor> GetAll();
-   //     Professor GetById(string email);
+        void Update(Professor pera);
+             Professor GetById(string email);
+        List<ProfessorV> getViewModel(List<Professor> users);
         void Add(Professor professor);
   //      void Update(string email, Professor professor);
  //       void Delete(string email);

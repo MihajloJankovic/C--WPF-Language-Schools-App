@@ -14,5 +14,6 @@ namespace LanguageSchools.Repositories
         void Add(User user);
         void Update(User user);
         void Delete(string email);
+        User GetById(string jmbg);
     }
 }

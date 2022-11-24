@@ -31,10 +31,13 @@ namespace LanguageSchools.Views
     public partial class AddEditProfessorsWindow : Window
     {
 
-        private User newUser;
+       
         private int g;
-        public AddEditProfessorsWindow(User usercina)
+        private Professor peraa;
+        private User usercina;
+        public AddEditProfessorsWindow(ProfessorV usercinaa)
         {
+            InitializeComponent();
             cbGender.ItemsSource = Enum.GetValues(typeof(EGender));
             passwordx.Visibility = Visibility.Hidden;
             emailx.Visibility = Visibility.Hidden;
@@ -44,12 +47,21 @@ namespace LanguageSchools.Views
             Number_.Visibility = Visibility.Hidden;
             Country.Visibility = Visibility.Hidden;
             City.Visibility = Visibility.Hidden;
-            //next.Visibility = Visibility.Hidden;
-            InitializeComponent();
+            //next.Visibility = Visibility.Visible;
+            btnSave.Visibility = Visibility.Hidden;
+            cbSchool.Visibility = Visibility.Hidden;
+            listbox1.Visibility = Visibility.Hidden;
+            
             g = 0;
+
+            String ID = usercinaa.Professor;
+            Professor pera = new Professor();
             
 
-            newUser = usercina as User;
+            pera = Data.Instance.ProfessorService.GetById(ID);
+            peraa = pera as Professor;
+            User yy = pera.User;
+            usercina = yy as User;
             txtEmail.Text = usercina.Email;
             txtFirstName.Text = usercina.FirstName;
             txtJMBG.Text = usercina.JMBG;
@@ -60,12 +72,34 @@ namespace LanguageSchools.Views
             passwordx.Text = usercina.Address.StreetNumber;
             firstnamex.Text = usercina.Address.Country;
             lastnamex.Text = usercina.Address.City;
-            DataContext = newUser;
-            
+
+            List<String> str = new List<String>();
+            List<Language> jezici = new List<Language>();
+            jezici.AddRange(Data.Instance.languageRepository.GetAll());
+            foreach (Language lang in jezici)
+            {
+                str.Add(lang.Jezik);
+            }
+            listbox1.SelectionMode = SelectionMode.Multiple;
+            listbox1.ItemsSource = str;
+
+            List<String> jezz = new List<String>();
+            foreach (Language element in pera.Languages)
+            {
+                jezz.Add(element.Jezik);
+            }
+            foreach(String lang in jezz)
+            {
+                listbox1.SelectedItems.Add(lang);
+            }
+            cbGender.SelectedItem = pera.User.Gender.ToString();
+            cbSchool.SelectedItem = pera.SchoolT.Name;
+
         }
         public AddEditProfessorsWindow()
         {
             InitializeComponent();
+            cbGender.ItemsSource = Enum.GetValues(typeof(EGender));
             passwordx.Visibility = Visibility.Hidden;
             emailx.Visibility = Visibility.Hidden;
             lastnamex.Visibility = Visibility.Hidden;
@@ -90,12 +124,7 @@ namespace LanguageSchools.Views
 
 
             g = 1;
-            newUser = new User
-            {
-                UserType = EUserType.PROFESSOR
-            };
            
-            DataContext = newUser;
         }
         
         private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
@@ -129,15 +158,15 @@ namespace LanguageSchools.Views
                     User korisnik = new User();
                     korisnik.Email = txtEmail.Text;
                     korisnik.Password = txtPassword.Text;
-                    korisnik.JMBG = txtJMBG.Text;
                     korisnik.LastName = txtLastName.Text;
                     korisnik.FirstName = txtFirstName.Text;
                     korisnik.Address = new Address();
+                    korisnik.JMBG = txtJMBG.Text;
                     korisnik.Address.Street = emailx.Text;
                     korisnik.Address.StreetNumber = passwordx.Text;
                     korisnik.Address.Country = firstnamex.Text;
                     korisnik.Address.City = lastnamex.Text;
-                    korisnik.Gender = EGender.FEMALE;
+                    korisnik.Gender = Enum.Parse<EGender>(cbGender.SelectedItem.ToString());
                     korisnik.UserType = EUserType.PROFESSOR;
 
 
@@ -200,6 +229,9 @@ namespace LanguageSchools.Views
                                         pera.Languages = temp;
                                         pera.Languages.AddRange(jezic);
                                         Data.Instance.ProfessorService.Add(pera);
+
+                                        DialogResult = true;
+                                        Close();
                                     }
                                     else
                                     {
@@ -230,12 +262,91 @@ namespace LanguageSchools.Views
             }
             if (g == 0)
             {
-                
+
+                if (cbSchool.SelectedItem is null)
+                {
+                    MessageBox.Show("chose a school first");
+
+                }
+                else
+                {
+
+                    if (emailx.Text.Length > 3)
+                    {
+                        if (passwordx.Text.Length >= 1)
+                        {
+                            if (firstnamex.Text.Length > 3)
+                            {
+                                if (lastnamex.Text.Length > 3)
+                                {
+                                    if (listbox1.SelectedItems.Count > 0)
+                                    {
+                                        peraa.Languages = new List<Language>();
+                                        foreach( var element in listbox1.SelectedItems)
+                                        {
+                                            Language je = new Language();
+                                            je.Jezik = element.ToString();
+                                            peraa.Languages.Add(je);
+                                        }
+                                        User korisnik = peraa.User;
+                                        korisnik.Email = txtEmail.Text;
+                                        korisnik.Password = txtPassword.Text;
+                                        korisnik.LastName = txtLastName.Text;
+                                        korisnik.FirstName = txtFirstName.Text;
+                                        korisnik.Address = new Address();
+                                        korisnik.Address.Street = emailx.Text;
+                                        korisnik.Address.StreetNumber = passwordx.Text;
+                                        korisnik.Address.Country = firstnamex.Text;
+                                        korisnik.Address.City = lastnamex.Text;
+                                        korisnik.Gender = Enum.Parse<EGender>(cbGender.SelectedItem.ToString());
+                                        List<School> skola = new List<School>();
+                                        skola.AddRange(Data.Instance.SchoolService.GetAll());
+                                        foreach (School h in skola)
+                                        {
+                                            if (h.Name == cbSchool.SelectedItem.ToString())
+                                            {
+                                                peraa.SchoolT = h;
+
+                                            }
+                                        }
+
+
+                                        Data.Instance.ProfessorService.Update(peraa);
+                                        DialogResult = true;
+                                        Close();
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("Chose at least 1 language");
+                                    }
+
+                                }
+                                else
+                                {
+                                    MessageBox.Show("City name too short");
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("Contry name too short");
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Enter street number");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("street name too short");
+                    }
+
+                }
+
+
             }    
 
 
-                DialogResult = true;
-            Close();
             
         }
 

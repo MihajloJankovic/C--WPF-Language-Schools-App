@@ -40,6 +40,17 @@ namespace LanguageSchools.Repositories
             con.Close();
 
         }
+        public void Update(Professor pera)
+        {
+            SqlConnection con = new SqlConnection("Data Source=MIHAJLO;Initial Catalog=baza_POP;Integrated Security=True");
+            con.Open();
+            SqlCommand cmd = new SqlCommand("DELETE FROM ProfessorSchool WHERE Profid = " + pera.UserId + ";", con);
+            //cmd.Parameters.AddWithValue("@Professor",id.ToString());
+            cmd.ExecuteNonQuery();
+            con.Close();
+            AddProfessorSchool(pera.SchoolT.Id.ToString(), pera.UserId);
+
+        }
         public List<School> GetAll()
         {
             List<School> schools = new List<School>();

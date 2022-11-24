@@ -16,7 +16,7 @@ namespace LanguageSchools.Models
         public AddressService AddressService { get; set; }
         public SchoolService SchoolService { get; set; }
         public LanguageRepository languageRepository { get; set; }
-
+        public StudentRepository studentRepository { get; set; }
         static Data() { }
 
         private Data()
@@ -26,6 +26,7 @@ namespace LanguageSchools.Models
             AddressService = new AddressService();
             SchoolService = new SchoolService();
             languageRepository = new LanguageRepository();
+            studentRepository = new StudentRepository();
         }
 
         public static Data Instance

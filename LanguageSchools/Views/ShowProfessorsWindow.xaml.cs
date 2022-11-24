@@ -23,8 +23,10 @@ namespace LanguageSchools.Views
         public ShowProfessorsWindow()
         {
             InitializeComponent();
+          
             List<Professor> users = Data.Instance.ProfessorService.GetAll().ToList();
-            dgProfessors.ItemsSource = users;
+            
+            dgProfessors.ItemsSource = Data.Instance.ProfessorService.getViewModel(users);
         }
 
         private void miAddProfessor_Click(object sender, RoutedEventArgs e)
@@ -35,24 +37,28 @@ namespace LanguageSchools.Views
 
             if ((bool)successeful)
             {
-                List<Professor> users = Data.Instance.ProfessorService.GetAll();
-                dgProfessors.ItemsSource = users;
+
+                List<Professor> users = Data.Instance.ProfessorService.GetAll().ToList();
+
+                dgProfessors.ItemsSource = Data.Instance.ProfessorService.getViewModel(users); ;
             }
         }
 
         private void miUpdateProfessor_Click(object sender, RoutedEventArgs e)
         {
-            var selectedUser = dgProfessors.SelectedItem as User;
-            if(selectedUser != null)
+            var sprof = dgProfessors.SelectedItem as ProfessorV;
+            if(sprof != null)
             {
-                var addEditProfessorWindow = new AddEditProfessorsWindow(selectedUser);
+                var addEditProfessorWindow = new AddEditProfessorsWindow(sprof);
 
                 var successful = addEditProfessorWindow.ShowDialog();
 
                 if ((bool)successful)
                 {
-                    List<Professor> users = Data.Instance.ProfessorService.GetAll();
-                    dgProfessors.ItemsSource = users;
+
+                    List<Professor> users = Data.Instance.ProfessorService.GetAll().ToList();
+
+                    dgProfessors.ItemsSource = Data.Instance.ProfessorService.getViewModel(users); ;
                 }
             }
         }

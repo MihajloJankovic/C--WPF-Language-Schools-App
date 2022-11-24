@@ -13,21 +13,7 @@ namespace LanguageSchools.Repositories
     {
         public void Add(Address address)
         {
-            SqlConnection con1 = new SqlConnection("Data Source=MIHAJLO;Initial Catalog=baza_POP;Integrated Security=True");
-            con1.Open();
-            SqlCommand cmd1 = new SqlCommand("select max(id) from Address;", con1);
-            SqlDataReader reader1 = cmd1.ExecuteReader();
-
-            while (reader1.Read())
-            {
-               int broj =  reader1.GetInt32(0);
-                address.Id = broj;
-            }
-            reader1.Close();
-            con1.Close();
-
-
-
+            
             SqlConnection con = new SqlConnection("Data Source=MIHAJLO;Initial Catalog=baza_POP;Integrated Security=True");
             con.Open();
             SqlCommand cmd = new SqlCommand("INSERT INTO Address VALUES (@street,@number,@city,@country);", con);

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Automation;
 using System.Windows.Documents;
 
 namespace LanguageSchools.Repositories
@@ -94,6 +95,16 @@ namespace LanguageSchools.Repositories
 
             return languages;
 
+        }
+        public void Update(Professor pera)
+        {
+            SqlConnection con = new SqlConnection("Data Source=MIHAJLO;Initial Catalog=baza_POP;Integrated Security=True");
+            con.Open();
+            SqlCommand cmd = new SqlCommand("DELETE FROM LanguageProfessore WHERE Professor = "+pera.UserId +";", con);
+            //cmd.Parameters.AddWithValue("@Professor",id.ToString());
+            cmd.ExecuteNonQuery();
+            con.Close();
+            AddToProfessor(pera);
         }
 
     }

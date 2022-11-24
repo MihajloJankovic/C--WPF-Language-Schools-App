@@ -9,6 +9,7 @@ namespace LanguageSchools.Repositories
 {
      interface ILanguageRepository
     {
+        void Update(Professor pera);
         List<Language> GetAll();
         List<Language> GetByProfessor(int id);
         List<Language> GetBySchool(int id);

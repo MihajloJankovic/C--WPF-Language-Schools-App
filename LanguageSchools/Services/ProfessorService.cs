@@ -22,11 +22,14 @@ namespace LanguageSchools.Services
             schoolRepository = new SchoolRepository();
         }
 
-  //      public Professor GetById(string email)
-      //  {
-       //     return professorRepository.GetById(email);
-       // }
-        
+              public Professor GetById(string email)
+          {
+             return professorRepository.GetById(email);
+         }
+        public List<ProfessorV> getViewModel(List<Professor> users)
+        {
+            return professorRepository.getViewModel(users);
+        }
         public List<Professor> GetAll()
         {
             return professorRepository.GetAll();
@@ -43,11 +46,10 @@ namespace LanguageSchools.Services
         
         }
 
-        //public void Update(string email, Professor professor)
-        //{
-        //    userRepository.Update(email, professor.User);
-        //    professorRepository.Update(email, professor);
-       // }
+        public void Update(Professor pera)
+        {
+          professorRepository.Update(pera);
+        }
 
         //public void Delete(string email)
         //{

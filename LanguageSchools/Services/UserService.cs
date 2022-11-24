@@ -27,6 +27,11 @@ namespace LanguageSchools.Services
         //{
 
         //}
+        public User GetById(string jmbg)
+        {
+            return repostory.GetById(jmbg);
+        }
+        
 
         public List<User> GetAll()
         {
