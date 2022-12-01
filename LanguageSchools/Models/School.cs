@@ -11,7 +11,11 @@ namespace LanguageSchools.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public Address Address { get; set; }
-
+        public bool IsDeleted { get; set; }
         public List<Language> Languages { get; set; }
+        public School()
+        {
+            this.IsDeleted = false;
+        }
     }
 }

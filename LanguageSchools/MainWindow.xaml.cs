@@ -37,5 +37,12 @@ namespace LanguageSchools
             
 
         }
+
+        private void btnSchool_Click(object sender, RoutedEventArgs e)
+        {
+            var professorsWindow = new ShowSchools();
+            professorsWindow.Show();
+            this.Hide();
+        }
     }
 }

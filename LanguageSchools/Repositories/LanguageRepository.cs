@@ -32,6 +32,38 @@ namespace LanguageSchools.Repositories
             }
             
         }
+        public void AddToSchool(School school)
+        {
+            foreach (Language jez in school.Languages)
+            {
+
+                SqlConnection con = new SqlConnection("Data Source=MIHAJLO;Initial Catalog=baza_POP;Integrated Security=True");
+                con.Open();
+                SqlCommand cmd = new SqlCommand("INSERT INTO SchoolLanguage VALUES (@Professor,@Language);", con);
+                cmd.Parameters.AddWithValue("@Professor", school.Id);
+                cmd.Parameters.AddWithValue("@Language", jez.Jezik);
+                cmd.ExecuteNonQuery();
+                con.Close();
+            }
+
+        }
+        public void UpdateToSchool(School school)
+        {
+
+            foreach (Language jez in school.Languages)
+            {
+                SqlConnection con = new SqlConnection("Data Source=MIHAJLO;Initial Catalog=baza_POP;Integrated Security=True");
+                con.Open();
+                SqlCommand cmd = new SqlCommand("DELETE FROM SchoolLanguage WHERE School = " + school.Id.ToString() + ";", con);
+                //cmd.Parameters.AddWithValue("@Professor",id.ToString());
+                cmd.ExecuteNonQuery();
+                con.Close();
+                
+
+               AddToSchool(school);
+            }
+
+        }
         public List<Language> GetBySchool(int id)
         {
             SqlConnection con = new SqlConnection("Data Source=MIHAJLO;Initial Catalog=baza_POP;Integrated Security=True");

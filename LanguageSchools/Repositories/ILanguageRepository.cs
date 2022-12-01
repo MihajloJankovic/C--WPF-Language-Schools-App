@@ -15,5 +15,6 @@ namespace LanguageSchools.Repositories
         List<Language> GetBySchool(int id);
         void Add();
         void AddToProfessor(Professor professor);
+        void AddToSchool(School school);
     }
 }

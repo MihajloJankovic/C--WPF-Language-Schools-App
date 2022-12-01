@@ -7,13 +7,27 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="Views\AddEditSchool.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\ShowSchools.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
     <Page Update="MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\AddEditProfessorsWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Views\AddEditSchool.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Views\ShowProfessorsWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\ShowSchools.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

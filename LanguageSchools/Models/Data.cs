@@ -14,7 +14,7 @@ namespace LanguageSchools.Models
         public UserService UserService { get; set; }
         public ProfessorService ProfessorService { get; set; }
         public AddressService AddressService { get; set; }
-        public SchoolService SchoolService { get; set; }
+        public SchoolRepository SchoolService { get; set; }
         public LanguageRepository languageRepository { get; set; }
         public StudentRepository studentRepository { get; set; }
         static Data() { }
@@ -24,7 +24,7 @@ namespace LanguageSchools.Models
             UserService = new UserService();
             ProfessorService = new ProfessorService();
             AddressService = new AddressService();
-            SchoolService = new SchoolService();
+            SchoolService = new SchoolRepository();
             languageRepository = new LanguageRepository();
             studentRepository = new StudentRepository();
         }

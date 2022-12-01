@@ -25,7 +25,15 @@ namespace LanguageSchools.Repositories
         }
         public void Add(School school)
         {
-
+            repostoryadres.Add(school.Address);
+            SqlConnection con = new SqlConnection("Data Source=MIHAJLO;Initial Catalog=baza_POP;Integrated Security=True");
+            con.Open();
+            SqlCommand cmd = new SqlCommand("INSERT INTO School VALUES (@Name,@Address,@deleted);", con);
+            cmd.Parameters.AddWithValue("@Name", school.Name);
+            cmd.Parameters.AddWithValue("@Address", school.Address.Id);
+            cmd.Parameters.AddWithValue("@deleted", school.IsDeleted.ToString());
+            cmd.ExecuteNonQuery();
+            con.Close();
 
         }
         public void AddProfessorSchool(String school,String professor)
@@ -51,6 +59,50 @@ namespace LanguageSchools.Repositories
             AddProfessorSchool(pera.SchoolT.Id.ToString(), pera.UserId);
 
         }
+        public void UpdateSchool(School pera)
+        {
+            SqlConnection con = new SqlConnection("Data Source=MIHAJLO;Initial Catalog=baza_POP;Integrated Security=True");
+            con.Open();
+            SqlCommand cmd = new SqlCommand("update School set Name = @Email where id = " + pera.Id.ToString() + ";", con);
+            cmd.Parameters.AddWithValue("@Email", pera.Name);
+           
+            cmd.ExecuteNonQuery();
+            SqlConnection con1 = new SqlConnection("Data Source=MIHAJLO;Initial Catalog=baza_POP;Integrated Security=True");
+            con1.Open();
+            SqlCommand cmd1 = new SqlCommand("update Address set street = @Street,number=@Number,city=@City,country=@Country where id = " + pera.Address.Id.ToString() + ";", con1);
+            cmd1.Parameters.AddWithValue("Street", pera.Address.Street);
+            cmd1.Parameters.AddWithValue("@Number", pera.Address.StreetNumber);
+            cmd1.Parameters.AddWithValue("@City", pera.Address.City);
+            cmd1.Parameters.AddWithValue("Country", pera.Address.Country);
+            cmd1.ExecuteNonQuery();
+            con1.Close();
+            repostorylang.UpdateToSchool(pera);
+        }
+        public List<SchoolV> getViewModel(List<School> skl)
+        {
+
+            List<SchoolV> schoolVS = new List<SchoolV>();
+
+            foreach (School sc in skl)
+            {
+                SchoolV peraa = new SchoolV();
+                peraa.School = Convert.ToString(sc.Id);
+                peraa.Name = sc.Name;
+                peraa.Address = sc.Address.Street + " " + sc.Address.StreetNumber + " " + sc.Address.City + " " + sc.Address.Country;
+                foreach (Language language in sc.Languages)
+                {
+                    peraa.Languages = "";
+                    peraa.Languages = peraa.Languages + language.Jezik + " ,";
+                }
+                
+
+                schoolVS.Add(peraa);
+            }
+
+
+
+            return schoolVS;
+        }
         public List<School> GetAll()
         {
             List<School> schools = new List<School>();
@@ -58,7 +110,7 @@ namespace LanguageSchools.Repositories
 
             SqlConnection con2 = new SqlConnection("Data Source=MIHAJLO;Initial Catalog=baza_POP;Integrated Security=True");
             con2.Open();
-            SqlCommand cmd2 = new SqlCommand("SELECT * FROM School;", con2);
+            SqlCommand cmd2 = new SqlCommand("SELECT * FROM School where deleted = 'false';", con2);
             SqlDataReader reader2 = cmd2.ExecuteReader();
             while (reader2.Read())
             {
@@ -67,10 +119,15 @@ namespace LanguageSchools.Repositories
                 school.Id= Convert.ToInt32(reader2["id"].ToString());
                 school.Name= reader2["Name"].ToString();
                 int addressid = Convert.ToInt32(reader2["Address"].ToString());
+                bool ss = Convert.ToBoolean(reader2["deleted"].ToString());
                 school.Address = new Address();
+                school.IsDeleted = ss;
                 school.Address = repostoryadres.GetById(addressid);
                 school.Languages.AddRange(repostorylang.GetBySchool(school.Id));
+                
+                
                 schools.Add(school);
+                
             }
 
             con2.Close();
@@ -89,7 +146,7 @@ namespace LanguageSchools.Repositories
         {
             SqlConnection con = new SqlConnection("Data Source=MIHAJLO;Initial Catalog=baza_POP;Integrated Security=True");
             con.Open();
-            SqlCommand cmd = new SqlCommand("select * from School;", con);
+            SqlCommand cmd = new SqlCommand("select * from School where deleted = 'false';", con);
             SqlDataReader reader = cmd.ExecuteReader();
             School school = new School();
             Address address = new Address();
@@ -127,7 +184,7 @@ namespace LanguageSchools.Repositories
         {
             SqlConnection con = new SqlConnection("Data Source=MIHAJLO;Initial Catalog=baza_POP;Integrated Security=True");
             con.Open();
-            SqlCommand cmd = new SqlCommand("select * from School where usertype = 'PROFESSOR';", con);
+            SqlCommand cmd = new SqlCommand("select * from School where usertype = 'PROFESSOR' and deleted = 'false';", con);
             SqlDataReader reader = cmd.ExecuteReader();
             School school = new School();
             while (reader.Read())

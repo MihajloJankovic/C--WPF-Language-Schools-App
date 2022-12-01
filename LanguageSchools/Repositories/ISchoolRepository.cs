@@ -15,5 +15,7 @@ namespace LanguageSchools.Repositories
         public void Add(School school);
         public School GetById(int id);
         public School GetByProfessor(int id);
+        public List<SchoolV> getViewModel(List<School> skl);
+        public void UpdateSchool(School pera);
     }
 }

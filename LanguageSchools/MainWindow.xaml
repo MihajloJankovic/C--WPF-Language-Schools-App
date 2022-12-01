@@ -9,10 +9,12 @@
 
     <Grid>
         <Button Name="btnStart"
-                Height="150" 
-                Width="250"
-                Click="btnStart_Click">
-            Start
+                Click="btnStart_Click" Margin="551,27,30,336">
+            Professor
         </Button>
-    </Grid>  
+        <Button Name="btnSchool"
+                Click="btnSchool_Click" Margin="338,27,271,336" RenderTransformOrigin="0.535,0.246">
+            School
+        </Button>
+    </Grid>
 </Window>

@@ -1,0 +1,33 @@
+﻿<Window x:Class="LanguageSchools.Views.AddEditSchool"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LanguageSchools.Views"
+        mc:Ignorable="d"
+        Title="AddEditSchool" Height="555" Width="545">
+    <Grid>
+
+        <TextBox x:Name="Name"  PreviewTextInput="NumberValidationTextBox"  Margin="111,30,26,476" />
+        <TextBox x:Name="emailx"  PreviewTextInput="NumberValidationTextBox"  Margin="108,81,29,425" />
+        <TextBox x:Name="passwordx"  PreviewTextInput="NumberValidationTextBox"  Margin="108,136,29,370" />
+        <TextBox x:Name="firstnamex"  PreviewTextInput="NumberValidationTextBox"  Margin="107,193,30,312" />
+        <TextBox x:Name="lastnamex"  PreviewTextInput="NumberValidationTextBox"  Margin="106,248,31,258" />
+        <Label x:Name="Namee" 
+            Content="Name:" HorizontalAlignment="Left" Margin="7,35,0,0" VerticalAlignment="Top" Height="25" Width="95"/>
+        <Label x:Name="Street__" 
+            Content="Street:" HorizontalAlignment="Left" Margin="6,88,0,0" VerticalAlignment="Top" Height="25" Width="95"/>
+        <Label x:Name="Number_" 
+            Content="Street Number:" PreviewTextInput="NumberValidationTextBox" HorizontalAlignment="Left" Margin="6,140,0,0" VerticalAlignment="Top" Height="25" Width="95"/>
+        <Label  x:Name="Country" 
+            Content="Country:" HorizontalAlignment="Left" Margin="5,199,0,0" VerticalAlignment="Top" Height="25" Width="95"/>
+        <Label  x:Name="City" 
+            Content="City:" HorizontalAlignment="Left" Margin="8,253,0,0" VerticalAlignment="Top" Height="25" Width="95"/>
+        <!--<TextBox  x:Name="emailx"  Margin="5,6,4,4" Text=""/>
+        <TextBox  x:Name="passwordx"  Margin="5,5,5,5" Text=""/>
+        <TextBox  x:Name="firstnamex"  Margin="5,5,5,5" Text=""/>
+        <TextBox x:Name="lastnamex"  Margin="5,5,5,5" Text=""/>-->
+        <ListBox x:Name="listbox1" Margin="110,300,30,111"/>
+        <Button Name="btnSave" Height="50" Width="100" Margin="258,452,187,37" Click="btnSave_Click">Save</Button>
+    </Grid>
+</Window>

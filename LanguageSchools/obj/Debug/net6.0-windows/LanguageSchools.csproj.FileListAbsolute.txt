@@ -30,3 +30,7 @@ C:\Users\janko\Documents\GitHub\SR3.2021.POP\LanguageSchools\obj\Debug\net6.0-wi
 C:\Users\janko\Documents\GitHub\SR3.2021.POP\LanguageSchools\obj\Debug\net6.0-windows\LanguageSchools.pdb
 C:\Users\janko\Documents\GitHub\SR3.2021.POP\LanguageSchools\obj\Debug\net6.0-windows\LanguageSchools.genruntimeconfig.cache
 C:\Users\janko\Documents\GitHub\SR3.2021.POP\LanguageSchools\obj\Debug\net6.0-windows\ref\LanguageSchools.dll
+C:\Users\janko\Documents\GitHub\SR3.2021.POP\LanguageSchools\obj\Debug\net6.0-windows\Views\ShowSchools.g.cs
+C:\Users\janko\Documents\GitHub\SR3.2021.POP\LanguageSchools\obj\Debug\net6.0-windows\Views\ShowSchools.baml
+C:\Users\janko\Documents\GitHub\SR3.2021.POP\LanguageSchools\obj\Debug\net6.0-windows\Views\AddEditSchool.g.cs
+C:\Users\janko\Documents\GitHub\SR3.2021.POP\LanguageSchools\obj\Debug\net6.0-windows\Views\AddEditSchool.baml
