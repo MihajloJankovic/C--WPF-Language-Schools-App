@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\janko\Documents\GitHub\SR3.2021.POP\LanguageSchools\obj\Debug\net6.0-windows\
+C:\Users\janko\Documents\GitHub\SR3.2021.POP\LanguageSchools\obj\Debug\net5.0-windows\
 LanguageSchools
 none
 false
-TRACE;DEBUG;NET;NET6_0;NETCOREAPP
+TRACE;DEBUG;NET;NET5_0;NETCOREAPP
 C:\Users\janko\Documents\GitHub\SR3.2021.POP\LanguageSchools\App.xaml
 7459559994
 
-501813649277
-195-822281792
+50756204227
+194320996980
 MainWindow.xaml;Views\AddEditProfessorsWindow.xaml;Views\AddEditSchool.xaml;Views\AddEditStudent.xaml;Views\ShowProfessorsWindow.xaml;Views\ShowSchools.xaml;Views\StudentAll.xaml;
 
-False
+True
 
