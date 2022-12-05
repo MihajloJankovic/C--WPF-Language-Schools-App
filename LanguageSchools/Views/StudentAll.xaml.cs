@@ -1,6 +1,7 @@
 ﻿using LanguageSchools.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -45,7 +46,11 @@ namespace LanguageSchools.Views
 
 
         }
-
+        void DataWindow_Closing(object sender, CancelEventArgs e)
+        {
+            MainWindow pera = new MainWindow();
+            pera.Show();
+        }
         private void miUpdateStudent_Click(object sender, RoutedEventArgs e)
         {
             var sprof = dgSchools.SelectedItem as StudentV;

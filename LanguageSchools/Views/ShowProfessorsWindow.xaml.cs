@@ -1,6 +1,7 @@
 ﻿using LanguageSchools.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -43,7 +44,11 @@ namespace LanguageSchools.Views
                 dgProfessors.ItemsSource = Data.Instance.ProfessorService.getViewModel(users); ;
             }
         }
-
+        void DataWindow_Closing(object sender, CancelEventArgs e)
+        {
+            MainWindow pera = new MainWindow();
+            pera.Show();
+        }
         private void miUpdateProfessor_Click(object sender, RoutedEventArgs e)
         {
             var sprof = dgProfessors.SelectedItem as ProfessorV;
@@ -66,9 +71,12 @@ namespace LanguageSchools.Views
         private void DeleteProf(object sender, RoutedEventArgs e)
         {
             var sprof = dgProfessors.SelectedItem as ProfessorV;
+            
+
             if (sprof != null)
             {
-                Data.Instance.ProfessorService.Delete(sprof.Professor);
+                Professor pera = Data.Instance.ProfessorService.GetById(sprof.Professor);
+                Data.Instance.ProfessorService.Delete(pera.User.JMBG);
                
                     List<Professor> users = Data.Instance.ProfessorService.GetAll().ToList();
 

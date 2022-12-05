@@ -51,5 +51,13 @@ namespace LanguageSchools
             professorsWindow.Show();
             this.Hide();
         }
+
+        
+
+        private void btnadg_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+       
     }
 }

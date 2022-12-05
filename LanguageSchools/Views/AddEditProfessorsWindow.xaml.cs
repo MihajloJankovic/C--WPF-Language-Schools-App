@@ -51,7 +51,7 @@ namespace LanguageSchools.Views
             btnSave.Visibility = Visibility.Hidden;
             cbSchool.Visibility = Visibility.Hidden;
             listbox1.Visibility = Visibility.Hidden;
-            
+            txtJMBG.IsReadOnly = true;
             g = 0;
 
             String ID = usercinaa.Professor;
@@ -299,6 +299,7 @@ namespace LanguageSchools.Views
                                         korisnik.Address.Country = firstnamex.Text;
                                         korisnik.Address.City = lastnamex.Text;
                                         korisnik.Gender = Enum.Parse<EGender>(cbGender.SelectedItem.ToString());
+                                        korisnik.IsActive = true;
                                         List<School> skola = new List<School>();
                                         skola.AddRange(Data.Instance.SchoolService.GetAll());
                                         foreach (School h in skola)

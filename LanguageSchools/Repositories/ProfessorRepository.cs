@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.IO;
@@ -45,7 +46,7 @@ namespace LanguageSchools.Repositories
                     {
                         peraa.Languages = peraa.Languages + language.Jezik + " ,";
                     }
-                    peraa.Name = 
+                    
                     peraa.Name = professor.User.FirstName.ToString() + " " + professor.User.LastName.ToString();
 
                     professorVS.Add(peraa);
@@ -100,11 +101,7 @@ namespace LanguageSchools.Repositories
 
         public void Delete(string email)
         {
-            SqlConnection con = new SqlConnection("Data Source=MIHAJLO;Initial Catalog=baza_POP;Integrated Security=True");
-            con.Open();
-            SqlCommand cmd = new SqlCommand("DELETE FROM Professore WHERE Professorid = " + email + ";", con);
-            cmd.ExecuteNonQuery();
-            con.Close();
+            repostory.Delete(email);
         }
       
 
@@ -120,42 +117,57 @@ namespace LanguageSchools.Repositories
                 }
             }
             List<Professor> lista = new List<Professor>();
-            
-
-
-
-            SqlConnection con = new SqlConnection("Data Source=MIHAJLO;Initial Catalog=baza_POP;Integrated Security=True");
-            con.Open();
-            SqlCommand cmd = new SqlCommand("select * from Professore;", con);
-            SqlDataReader reader = cmd.ExecuteReader();
-            
-            while (reader.Read())
+            if (list.Count > 0)
             {
-                Professor professor = new Professor();
-                String id = reader["Userid"].ToString();
-                if (id == null)
+
+                
+
+
+
+
+                SqlConnection con = new SqlConnection("Data Source=MIHAJLO;Initial Catalog=baza_POP;Integrated Security=True");
+                con.Open();
+                SqlCommand cmd = new SqlCommand("select * from Professore;", con);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
                 {
-                    continue;
+                    Professor professor = new Professor();
+                    String id = reader["Userid"].ToString();
+                    if (id == null)
+                    {
+                        continue;
+                    }
+                    User usert = list.Find(e => e.JMBG == id.ToString());
+                    professor.User = usert;
+                    professor.UserId = reader["Professorid"].ToString();
+                    int profid = Convert.ToInt32(professor.UserId);
+                    List<Language> pp = new List<Language>();
+                    List<Meeting> bb = new List<Meeting>();
+                    professor.Languages = pp;
+                    professor.Meetings = bb;
+                    professor.Languages.AddRange(repostorylang.GetByProfessor(profid));
+                    professor.Meetings.AddRange(repostorymeet.getByProfessor(profid));
+                    int schid = Convert.ToInt32(reader["schid"].ToString());
+                    professor.SchoolT = repostorySchool.GetById(schid);
+                    if(professor.User is not null)
+                    {
+                        if (professor.User.IsActive != false)
+                        {
+                            lista.Add(professor);
+                        }
+                    }
+
                 }
-                User usert = list.Find(e => e.JMBG == id.ToString());
-                professor.User = usert;
-                professor.UserId = reader["Professorid"].ToString();
-                int profid = Convert.ToInt32(professor.UserId);
-                List<Language> pp = new List<Language>();
-                List<Meeting> bb = new List<Meeting>();
-                professor.Languages =pp;
-                professor.Meetings = bb;
-                professor.Languages.AddRange(repostorylang.GetByProfessor(profid));
-                professor.Meetings.AddRange(repostorymeet.getByProfessor(profid));
-                int schid = Convert.ToInt32(reader["schid"].ToString());
-                professor.SchoolT = repostorySchool.GetById(schid);
-                lista.Add(professor);
+                reader.Close();
+                con.Close();
+                return lista;
 
             }
-            reader.Close();
-            con.Close();
-            return lista;
-
+            else
+            {
+                return lista;
+            }
 
         }
 

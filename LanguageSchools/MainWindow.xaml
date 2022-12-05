@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LanguageSchools"
         mc:Ignorable="d"
-        Title="LanguageSchools" Height="450" Width="800">
+        Title="LanguageSchools" Height="450" Width="800"
+        >
 
     <Grid>
         <Button Name="btnStart"
@@ -18,5 +19,8 @@
         </Button>
         <Button x:Name="btnStudent"
             Click="btnStudent_Click" Margin="130,27,479,336" RenderTransformOrigin="0.535,0.246" Content="Student"/>
+        <Button Name="btnadg"
+                Click="btnadg_Click" Content="Log out" Margin="590,339,42,33" RenderTransformOrigin="0.535,0.246">
+        </Button>
     </Grid>
 </Window>
