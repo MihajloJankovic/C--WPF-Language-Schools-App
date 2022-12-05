@@ -12,6 +12,10 @@ namespace LanguageSchools.Repositories
         List<Meeting> GetByProfessor(int id);
         void AddToProfessor(Professor professor);
         public void Update(Professor pera);
-        
+        void UpdateStudent(Student pera);
+        List<Meeting> getByStudent(int id);
+        List<Meeting> getByProfessor(Professor professor);
+
+
     }
 }

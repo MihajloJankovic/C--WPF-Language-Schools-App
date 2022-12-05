@@ -10,6 +10,7 @@ namespace LanguageSchools.Services
     interface IUserService
     {
         User GetById(string jmbg);
+        void Delete(string email);
         List<User> GetAll();
    //     List<User> GetActiveUsers();
         void Add(User user);

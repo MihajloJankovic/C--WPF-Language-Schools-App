@@ -46,7 +46,6 @@ namespace LanguageSchools.Views
             school = new School();
             School pera = new School();
             pera = Data.Instance.SchoolService.GetById(Convert.ToInt32(skola.School));
-            pera.Languages = new List<Language>();
             school = pera;
             g = 1;
             Name.Text = school.Name;
@@ -119,7 +118,19 @@ namespace LanguageSchools.Views
                                         List<Language> temp = new List<Language>();
                                         sch.Languages = temp;
                                         sch.Languages.AddRange(jezic);
-                                        sch.Id = 1;
+                                        
+
+
+
+
+
+                                       
+
+
+
+
+
+
                                         Data.Instance.SchoolService.Add(sch);
 
                                         DialogResult = true;

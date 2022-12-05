@@ -23,9 +23,33 @@ namespace LanguageSchools.Repositories
             repostoryadres = new AddressRepository();
             repostorylang = new LanguageRepository();
         }
+        public void Delete(String id)
+        {
+            SqlConnection con = new SqlConnection("Data Source=MIHAJLO;Initial Catalog=baza_POP;Integrated Security=True");
+            con.Open();
+            SqlCommand cmd = new SqlCommand("DELETE FROM School WHERE id = " + id + ";", con);
+            //cmd.Parameters.AddWithValue("@Professor",id.ToString());
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
         public void Add(School school)
         {
             repostoryadres.Add(school.Address);
+            
+            SqlConnection con1 = new SqlConnection("Data Source=MIHAJLO;Initial Catalog=baza_POP;Integrated Security=True");
+            con1.Open();
+            SqlCommand cmd1 = new SqlCommand("SELECT max(id) FROM Address;", con1);
+            SqlDataReader reader1 = cmd1.ExecuteReader();
+
+
+            while (reader1.Read())
+            {
+                school.Address.Id = (reader1.GetInt32(0));
+            }
+
+            // Call Close when done reading.
+            reader1.Close();
+            con1.Close();
             SqlConnection con = new SqlConnection("Data Source=MIHAJLO;Initial Catalog=baza_POP;Integrated Security=True");
             con.Open();
             SqlCommand cmd = new SqlCommand("INSERT INTO School VALUES (@Name,@Address,@deleted);", con);
@@ -34,6 +58,23 @@ namespace LanguageSchools.Repositories
             cmd.Parameters.AddWithValue("@deleted", school.IsDeleted.ToString());
             cmd.ExecuteNonQuery();
             con.Close();
+
+            SqlConnection con3 = new SqlConnection("Data Source=MIHAJLO;Initial Catalog=baza_POP;Integrated Security=True");
+            con3.Open();
+            SqlCommand cmd3 = new SqlCommand("SELECT max(id) FROM School;", con3);
+            SqlDataReader reader3 = cmd3.ExecuteReader();
+
+
+            while (reader3.Read())
+            {
+                school.Id = (reader3.GetInt32(0)) ;
+            }
+
+
+            reader3.Close();
+            con3.Close();
+            repostorylang.UpdateToSchool(school);
+
 
         }
         public void AddProfessorSchool(String school,String professor)
@@ -89,9 +130,10 @@ namespace LanguageSchools.Repositories
                 peraa.School = Convert.ToString(sc.Id);
                 peraa.Name = sc.Name;
                 peraa.Address = sc.Address.Street + " " + sc.Address.StreetNumber + " " + sc.Address.City + " " + sc.Address.Country;
+                peraa.Languages = "";
                 foreach (Language language in sc.Languages)
                 {
-                    peraa.Languages = "";
+                    
                     peraa.Languages = peraa.Languages + language.Jezik + " ,";
                 }
                 
@@ -172,6 +214,7 @@ namespace LanguageSchools.Repositories
                
                 con2.Close();
                 reader2.Close();
+                school.Languages = Data.Instance.languageRepository.GetBySchool(id);
                 
             }
          

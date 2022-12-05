@@ -20,6 +20,16 @@ namespace LanguageSchools.Repositories
 
            
         }
+        public void DeleteForStudent(string email)
+        {
+            SqlConnection con = new SqlConnection("Data Source=MIHAJLO;Initial Catalog=baza_POP;Integrated Security=True");
+            con.Open();
+            SqlCommand cmd = new SqlCommand("DELETE FROM Meeting WHERE Student = " + email + ";", con);
+            //cmd.Parameters.AddWithValue("@Professor",id.ToString());
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
+
         public void AddToProfessor(Professor professor)
         {
             foreach (Meeting jez in professor.Meetings)
@@ -65,7 +75,67 @@ namespace LanguageSchools.Repositories
             con.Close();
             return meetings;
         }
+        public void AddToStudent(Student professor)
+        {
+            foreach (Meeting jez in professor.MeetingList)
+            {
 
+                SqlConnection con = new SqlConnection("Data Source=MIHAJLO;Initial Catalog=baza_POP;Integrated Security=True");
+                con.Open();
+                SqlCommand cmd = new SqlCommand("INSERT INTO StudentMeeting VALUES (@Professor,@Meeting);", con);
+                cmd.Parameters.AddWithValue("@Professor", Convert.ToInt32(professor.User.JMBG));
+                cmd.Parameters.AddWithValue("@Meeting", Convert.ToInt32(jez.Id));
+                cmd.ExecuteNonQuery();
+                con.Close();
+            }
+
+        }
+
+        public List<Meeting> getByStudent(String id)
+        {
+
+            List<User> list = new List<User>();
+            SqlConnection con = new SqlConnection("Data Source=MIHAJLO;Initial Catalog=baza_POP;Integrated Security=True");
+            con.Open();
+            SqlCommand cmd = new SqlCommand("select * from Meeting where Student = " + id + ";", con);
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            List<Meeting> meetings = new List<Meeting>();
+            while (reader.Read())
+            {
+                Meeting meeting = new Meeting();
+                meeting.Id = Convert.ToInt32(reader["id"]);
+                meeting.Professor = Data.Instance.ProfessorService.GetById(reader["Professor"].ToString());
+                meeting.From = Convert.ToDateTime(reader["[From]"]);
+                meeting.To = Convert.ToDateTime(reader["[To]"]);
+                meeting.Status = Convert.ToBoolean(reader["Status"]);
+                Student st = new Student();
+                st.User = Data.Instance.UserService.GetById(reader["Student"].ToString());
+                st.MeetingList = new List<Meeting>();
+                meeting.Student = st;
+                meetings.Add(meeting);
+
+            }
+            reader.Close();
+            con.Close();
+            return meetings;
+        }
+        public void UpdateStudent(Student pera)
+        {
+            SqlConnection con = new SqlConnection("Data Source=MIHAJLO;Initial Catalog=baza_POP;Integrated Security=True");
+            con.Open();
+
+
+
+
+
+
+            SqlCommand cmd = new SqlCommand("DELETE FROM Meeting WHERE Student = " + pera.User.JMBG + ";", con);
+            //cmd.Parameters.AddWithValue("@Professor",id.ToString());
+            cmd.ExecuteNonQuery();
+            con.Close();
+            AddToStudent(pera);
+        }
         public void Update(Professor pera)
         {
             SqlConnection con = new SqlConnection("Data Source=MIHAJLO;Initial Catalog=baza_POP;Integrated Security=True");

@@ -17,6 +17,7 @@
               >
             <MenuItem Name="miAddSchool" Height="30" Header="Add School" Click="miAddSchool_Click"></MenuItem>
             <MenuItem Name="miUpdateSchool" Height="30" Header="Update school" Click="miUpdateSchool_Click"></MenuItem>
+            <MenuItem x:Name="miDeleteProfessor" Height="30" Header="Delete School" Click="DeleteSch"/>
         </Menu>
 
 

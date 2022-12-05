@@ -63,5 +63,19 @@ namespace LanguageSchools.Views
                 }
             }
         }
+
+        private void DeleteSch(object sender, RoutedEventArgs e)
+        {
+            var sprof = dgSchools.SelectedItem as SchoolV;
+            if (sprof != null)
+            {
+                Data.Instance.SchoolService.Delete(sprof.School);
+
+                List<School> schools = Data.Instance.SchoolService.GetAll().ToList();
+
+                dgSchools.ItemsSource = Data.Instance.SchoolService.getViewModel(schools);
+
+            }
+        }
     }
 }

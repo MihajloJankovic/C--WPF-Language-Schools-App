@@ -98,10 +98,14 @@ namespace LanguageSchools.Repositories
 
         }
 
-        //public void Delete(string email)
-        //{
-        //    
-        //}
+        public void Delete(string email)
+        {
+            SqlConnection con = new SqlConnection("Data Source=MIHAJLO;Initial Catalog=baza_POP;Integrated Security=True");
+            con.Open();
+            SqlCommand cmd = new SqlCommand("DELETE FROM Professore WHERE Professorid = " + email + ";", con);
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
       
 
         public List<Professor> GetAll()
@@ -129,6 +133,10 @@ namespace LanguageSchools.Repositories
             {
                 Professor professor = new Professor();
                 String id = reader["Userid"].ToString();
+                if (id == null)
+                {
+                    continue;
+                }
                 User usert = list.Find(e => e.JMBG == id.ToString());
                 professor.User = usert;
                 professor.UserId = reader["Professorid"].ToString();

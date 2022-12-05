@@ -16,5 +16,7 @@
                 Click="btnSchool_Click" Margin="338,27,271,336" RenderTransformOrigin="0.535,0.246">
             School
         </Button>
+        <Button x:Name="btnStudent"
+            Click="btnStudent_Click" Margin="130,27,479,336" RenderTransformOrigin="0.535,0.246" Content="Student"/>
     </Grid>
 </Window>

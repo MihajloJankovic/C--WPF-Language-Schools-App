@@ -15,7 +15,7 @@ namespace LanguageSchools.Models
         public List<Language> Languages { get; set; }
         public School()
         {
-            this.IsDeleted = false;
+            IsDeleted = false;
         }
     }
 }

@@ -6,13 +6,13 @@
         xmlns:local="clr-namespace:LanguageSchools.Views"
         mc:Ignorable="d"
         Title="AddEditSchool" Height="555" Width="545">
-    <Grid>
+    <Grid Margin="0,0,10,-6">
 
-        <TextBox x:Name="Name"  PreviewTextInput="NumberValidationTextBox"  Margin="111,30,26,476" />
-        <TextBox x:Name="emailx"  PreviewTextInput="NumberValidationTextBox"  Margin="108,81,29,425" />
-        <TextBox x:Name="passwordx"  PreviewTextInput="NumberValidationTextBox"  Margin="108,136,29,370" />
-        <TextBox x:Name="firstnamex"  PreviewTextInput="NumberValidationTextBox"  Margin="107,193,30,312" />
-        <TextBox x:Name="lastnamex"  PreviewTextInput="NumberValidationTextBox"  Margin="106,248,31,258" />
+        <TextBox x:Name="Name"    Margin="111,30,27,468" />
+        <TextBox x:Name="emailx"    Margin="108,81,29,409" />
+        <TextBox x:Name="passwordx"  PreviewTextInput="NumberValidationTextBox"  Margin="108,136,28,351" />
+        <TextBox x:Name="firstnamex"    Margin="107,193,30,299" />
+        <TextBox x:Name="lastnamex"    Margin="106,248,32,242" />
         <Label x:Name="Namee" 
             Content="Name:" HorizontalAlignment="Left" Margin="7,35,0,0" VerticalAlignment="Top" Height="25" Width="95"/>
         <Label x:Name="Street__" 

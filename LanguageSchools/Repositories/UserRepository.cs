@@ -35,7 +35,7 @@ namespace LanguageSchools.Repositories
             cmd.Parameters.AddWithValue("@Jmbg", user.JMBG);
             cmd.Parameters.AddWithValue("@Gender", user.Gender.ToString() );
             cmd.Parameters.AddWithValue("@UserType", user.UserType.ToString() );
-            cmd.Parameters.AddWithValue("@Address", user.Address.Id );
+            cmd.Parameters.AddWithValue("@Address", user.Address.Id.ToString() );
             cmd.Parameters.AddWithValue("@IsActive", user.IsActive.ToString());
             cmd.ExecuteNonQuery();
             con.Close();
@@ -44,7 +44,14 @@ namespace LanguageSchools.Repositories
 
         public void Delete(string email)
         {
-        
+            SqlConnection con = new SqlConnection("Data Source=MIHAJLO;Initial Catalog=baza_POP;Integrated Security=True");
+            con.Open();
+            SqlCommand cmd = new SqlCommand("update Usercina set IsActive=@IsActive where Jmbg = " + email + ";", con);
+           
+            cmd.Parameters.AddWithValue("@IsActive","false");
+            cmd.ExecuteNonQuery();
+            con.Close();
+
         }
 
         public List<User> GetAll()
@@ -93,7 +100,7 @@ namespace LanguageSchools.Repositories
 
             return list;
         }
-
+        
         public User GetById(string jmbg)
         {
             SqlConnection con = new SqlConnection("Data Source=MIHAJLO;Initial Catalog=baza_POP;Integrated Security=True");
@@ -112,7 +119,7 @@ namespace LanguageSchools.Repositories
                 user.Gender = Enum.Parse<EGender>(reader["Gender"].ToString());
                 user.UserType = Enum.Parse<EUserType>(reader["UserType"].ToString());
                 int adres = Convert.ToInt32(reader["Address"].ToString());
-
+                user.IsActive = Convert.ToBoolean(reader["IsActive"].ToString());
 
 
                 SqlConnection con1 = new SqlConnection("Data Source=MIHAJLO;Initial Catalog=baza_POP;Integrated Security=True");
@@ -142,12 +149,12 @@ namespace LanguageSchools.Repositories
         {
             SqlConnection con = new SqlConnection("Data Source=MIHAJLO;Initial Catalog=baza_POP;Integrated Security=True");
             con.Open();
-            SqlCommand cmd = new SqlCommand("update Usercina set email = @Email,Password=@Password,FirstName=@FirstName,LastName=@LastName,gender=@gender,usertype=@usertype,isactive=@isactive where Jmbg = " + user.JMBG.ToString()+";", con);
+            SqlCommand cmd = new SqlCommand("update Usercina set email = @Email,Password=@Password,FirstName=@FirstName,LastName=@LastName,Jmbg=@jmbg,gender=@gender,usertype=@usertype,isactive=@isactive where Jmbg = " + user.JMBG.ToString()+ ",IsActive = true;", con);
             cmd.Parameters.AddWithValue("@Email", user.Email);
             cmd.Parameters.AddWithValue("@Password", user.Password);
             cmd.Parameters.AddWithValue("@FirstName", user.FirstName);
             cmd.Parameters.AddWithValue("@LastName", user.LastName);
-           // cmd.Parameters.AddWithValue("@Jmbg", user.JMBG);
+            cmd.Parameters.AddWithValue("@Jmbg", user.JMBG);
             cmd.Parameters.AddWithValue("@Gender", user.Gender.ToString());
             cmd.Parameters.AddWithValue("@UserType", user.UserType.ToString());
             cmd.Parameters.AddWithValue("@IsActive", user.IsActive.ToString());

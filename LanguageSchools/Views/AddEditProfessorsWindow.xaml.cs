@@ -423,5 +423,11 @@ namespace LanguageSchools.Views
                 MessageBox.Show("Email too short!");
             }
         }
+
+        private void canc_Click(object sender, RoutedEventArgs e)
+        {
+            DialogResult = false;
+            Close();
+        }
     }
 }

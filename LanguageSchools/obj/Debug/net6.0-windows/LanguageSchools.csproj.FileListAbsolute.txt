@@ -34,3 +34,7 @@ C:\Users\janko\Documents\GitHub\SR3.2021.POP\LanguageSchools\obj\Debug\net6.0-wi
 C:\Users\janko\Documents\GitHub\SR3.2021.POP\LanguageSchools\obj\Debug\net6.0-windows\Views\ShowSchools.baml
 C:\Users\janko\Documents\GitHub\SR3.2021.POP\LanguageSchools\obj\Debug\net6.0-windows\Views\AddEditSchool.g.cs
 C:\Users\janko\Documents\GitHub\SR3.2021.POP\LanguageSchools\obj\Debug\net6.0-windows\Views\AddEditSchool.baml
+C:\Users\janko\Documents\GitHub\SR3.2021.POP\LanguageSchools\obj\Debug\net6.0-windows\Views\AddEditStudent.g.cs
+C:\Users\janko\Documents\GitHub\SR3.2021.POP\LanguageSchools\obj\Debug\net6.0-windows\Views\StudentAll.g.cs
+C:\Users\janko\Documents\GitHub\SR3.2021.POP\LanguageSchools\obj\Debug\net6.0-windows\Views\AddEditStudent.baml
+C:\Users\janko\Documents\GitHub\SR3.2021.POP\LanguageSchools\obj\Debug\net6.0-windows\Views\StudentAll.baml

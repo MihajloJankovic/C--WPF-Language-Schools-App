@@ -62,5 +62,19 @@ namespace LanguageSchools.Views
                 }
             }
         }
+
+        private void DeleteProf(object sender, RoutedEventArgs e)
+        {
+            var sprof = dgProfessors.SelectedItem as ProfessorV;
+            if (sprof != null)
+            {
+                Data.Instance.ProfessorService.Delete(sprof.Professor);
+               
+                    List<Professor> users = Data.Instance.ProfessorService.GetAll().ToList();
+
+                    dgProfessors.ItemsSource = Data.Instance.ProfessorService.getViewModel(users); ;
+                
+            }
+        }
     }
 }

@@ -51,11 +51,11 @@ namespace LanguageSchools.Services
           professorRepository.Update(pera);
         }
 
-        //public void Delete(string email)
-        //{
-        //    userRepository.Delete(email);
-        //    professorRepository.Delete(email);
-        //}
+        public void Delete(string email)
+        {
+           
+         professorRepository.Delete(email);
+        }
 
         //public List<User> ListAllStudents()
         //{

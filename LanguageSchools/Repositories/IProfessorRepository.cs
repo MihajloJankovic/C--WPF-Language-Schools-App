@@ -15,6 +15,6 @@ namespace LanguageSchools.Repositories
         List<ProfessorV> getViewModel(List<Professor> users);
         void Add(Professor professor);
   //      void Update(string email, Professor professor);
- //       void Delete(string email);
+        void Delete(string email);
     }
 }

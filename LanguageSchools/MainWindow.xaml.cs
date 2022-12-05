@@ -44,5 +44,12 @@ namespace LanguageSchools
             professorsWindow.Show();
             this.Hide();
         }
+
+        private void btnStudent_Click(object sender, RoutedEventArgs e)
+        {
+            var professorsWindow = new StudentAll();
+            professorsWindow.Show();
+            this.Hide();
+        }
     }
 }

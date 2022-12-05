@@ -31,7 +31,12 @@ namespace LanguageSchools.Services
         {
             return repostory.GetById(jmbg);
         }
-        
+        public void Delete(string email)
+        {
+             repostory.Delete(email);
+        }
+
+
 
         public List<User> GetAll()
         {

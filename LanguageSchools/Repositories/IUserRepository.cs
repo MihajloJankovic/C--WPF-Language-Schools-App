@@ -13,7 +13,7 @@ namespace LanguageSchools.Repositories
         //User GetById(string email);
         void Add(User user);
         void Update(User user);
-        void Delete(string email);
         User GetById(string jmbg);
+        void Delete(string email);
     }
 }

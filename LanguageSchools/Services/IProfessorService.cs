@@ -15,7 +15,7 @@ namespace LanguageSchools.Services
         List<ProfessorV> getViewModel(List<Professor> users);
         void Add(Professor professor);
         void Update(Professor pera);
-  //      void Delete(string email);
+        void Delete(string email);
   //      List<User> ListAllStudents();
     }
 }
