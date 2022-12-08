@@ -84,5 +84,24 @@ namespace LanguageSchools.Views
                 
             }
         }
+
+        private void miSC_Click(object sender, RoutedEventArgs e)
+        {
+            var sprof = dgProfessors.SelectedItem as ProfessorV;
+            if (sprof != null)
+            {
+                var addEditProfessorWindow = new Scheduler(sprof);
+
+                var successful = addEditProfessorWindow.ShowDialog();
+
+                if ((bool)successful)
+                {
+
+                    List<Professor> users = Data.Instance.ProfessorService.GetAll().ToList();
+
+                    dgProfessors.ItemsSource = Data.Instance.ProfessorService.getViewModel(users); ;
+                }
+            }
+        }
     }
 }

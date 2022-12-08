@@ -8,6 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Syncfusion.SfSchedule.WPF" Version="18.3.0.53" />
+    <PackageReference Include="Syncfusion.Shared.WPF" Version="20.3.0.59" />
+    <PackageReference Include="Syncfusion.Tools.WPF" Version="20.3.0.59" />
+    <PackageReference Include="Syncfusion.UI.WPF.NET" Version="20.3.0.59" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
   </ItemGroup>
 

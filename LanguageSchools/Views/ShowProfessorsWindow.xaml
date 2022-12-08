@@ -18,6 +18,7 @@
             <MenuItem Name="miAddProfessor" Height="30" Header="Add professor" Click="miAddProfessor_Click"></MenuItem>
             <MenuItem Name="miUpdateProfessor" Height="30" Header="Update professor" Click="miUpdateProfessor_Click"></MenuItem>
             <MenuItem x:Name="miDeleteProfessor" Height="30" Header="Delete professor" Click="DeleteProf"/>
+            <MenuItem x:Name="miSC" Height="30" Header="Professor Meetings" Click="miSC_Click"/>
         </Menu>
 
         

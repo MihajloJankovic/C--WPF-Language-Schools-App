@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "zO7QPJ/m4vcm9SmqbtfwH7iNE+ia0cJpnfsej2ov8Cv5HEeQmb1vVzBTnI8D1mQhh9mA3HVCtZ0A8xwan4HR7w==",
+  "dgSpecHash": "TE90L9ZzTZrb+OFl9ptdll6SHXkg4q6hsgmyUOcdE/ISFHScxR+pvbdRvwmV3qlQUVDOYh52H5kIArTUutRRuQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\janko\\Documents\\GitHub\\SR3.2021.POP\\LanguageSchools\\LanguageSchools.csproj",
   "expectedPackageFiles": [
@@ -10,6 +10,13 @@
     "C:\\Users\\janko\\.nuget\\packages\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "C:\\Users\\janko\\.nuget\\packages\\runtime.win-x64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-x64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "C:\\Users\\janko\\.nuget\\packages\\runtime.win-x86.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-x86.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
+    "C:\\Users\\janko\\.nuget\\packages\\syncfusion.licensing\\20.3.0.59\\syncfusion.licensing.20.3.0.59.nupkg.sha512",
+    "C:\\Users\\janko\\.nuget\\packages\\syncfusion.sfradialmenu.wpf\\18.3.0.53\\syncfusion.sfradialmenu.wpf.18.3.0.53.nupkg.sha512",
+    "C:\\Users\\janko\\.nuget\\packages\\syncfusion.sfschedule.wpf\\18.3.0.53\\syncfusion.sfschedule.wpf.18.3.0.53.nupkg.sha512",
+    "C:\\Users\\janko\\.nuget\\packages\\syncfusion.sfshared.wpf\\18.3.0.53\\syncfusion.sfshared.wpf.18.3.0.53.nupkg.sha512",
+    "C:\\Users\\janko\\.nuget\\packages\\syncfusion.shared.wpf\\20.3.0.59\\syncfusion.shared.wpf.20.3.0.59.nupkg.sha512",
+    "C:\\Users\\janko\\.nuget\\packages\\syncfusion.tools.wpf\\20.3.0.59\\syncfusion.tools.wpf.20.3.0.59.nupkg.sha512",
+    "C:\\Users\\janko\\.nuget\\packages\\syncfusion.ui.wpf.net\\20.3.0.59\\syncfusion.ui.wpf.net.20.3.0.59.nupkg.sha512",
     "C:\\Users\\janko\\.nuget\\packages\\system.data.sqlclient\\4.8.5\\system.data.sqlclient.4.8.5.nupkg.sha512",
     "C:\\Users\\janko\\.nuget\\packages\\system.security.accesscontrol\\4.7.0\\system.security.accesscontrol.4.7.0.nupkg.sha512",
     "C:\\Users\\janko\\.nuget\\packages\\system.security.principal.windows\\4.7.0\\system.security.principal.windows.4.7.0.nupkg.sha512"

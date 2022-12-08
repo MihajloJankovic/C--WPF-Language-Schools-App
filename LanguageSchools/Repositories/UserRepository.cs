@@ -149,7 +149,7 @@ namespace LanguageSchools.Repositories
         {
             SqlConnection con = new SqlConnection("Data Source=MIHAJLO;Initial Catalog=baza_POP;Integrated Security=True");
             con.Open();
-            SqlCommand cmd = new SqlCommand("update Usercina set email = @Email,Password=@Password,FirstName=@FirstName,LastName=@LastName,Jmbg=@jmbg,gender=@gender,usertype=@usertype,isactive=@isactive where Jmbg = " + user.JMBG.ToString()+ " and IsActive = 'true';", con);
+            SqlCommand cmd = new SqlCommand("update Usercina set email = @Email,Password=@Password,FirstName=@FirstName,LastName=@LastName,Jmbg=@jmbg,gender=@gender,usertype=@usertype,isactive=@isactive where Jmbg = '" + user.JMBG.ToString()+ "' and IsActive = 'true';", con);
             cmd.Parameters.AddWithValue("@Email", user.Email);
             cmd.Parameters.AddWithValue("@Password", user.Password);
             cmd.Parameters.AddWithValue("@FirstName", user.FirstName);

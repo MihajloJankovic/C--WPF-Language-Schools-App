@@ -7,10 +7,16 @@
     <NuGetPackageRoot Condition=" '$(NuGetPackageRoot)' == '' ">$(UserProfile)\.nuget\packages\</NuGetPackageRoot>
     <NuGetPackageFolders Condition=" '$(NuGetPackageFolders)' == '' ">C:\Users\janko\.nuget\packages\;C:\Program Files\DevExpress 22.1\Components\Offline Packages</NuGetPackageFolders>
     <NuGetProjectStyle Condition=" '$(NuGetProjectStyle)' == '' ">PackageReference</NuGetProjectStyle>
-    <NuGetToolVersion Condition=" '$(NuGetToolVersion)' == '' ">6.3.0</NuGetToolVersion>
+    <NuGetToolVersion Condition=" '$(NuGetToolVersion)' == '' ">6.4.0</NuGetToolVersion>
   </PropertyGroup>
   <ItemGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <SourceRoot Include="C:\Users\janko\.nuget\packages\" />
     <SourceRoot Include="C:\Program Files\DevExpress 22.1\Components\Offline Packages\" />
   </ItemGroup>
+  <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <PkgSyncfusion_UI_WPF_NET Condition=" '$(PkgSyncfusion_UI_WPF_NET)' == '' ">C:\Users\janko\.nuget\packages\syncfusion.ui.wpf.net\20.3.0.59</PkgSyncfusion_UI_WPF_NET>
+    <PkgSyncfusion_Shared_WPF Condition=" '$(PkgSyncfusion_Shared_WPF)' == '' ">C:\Users\janko\.nuget\packages\syncfusion.shared.wpf\20.3.0.59</PkgSyncfusion_Shared_WPF>
+    <PkgSyncfusion_Tools_WPF Condition=" '$(PkgSyncfusion_Tools_WPF)' == '' ">C:\Users\janko\.nuget\packages\syncfusion.tools.wpf\20.3.0.59</PkgSyncfusion_Tools_WPF>
+    <PkgSyncfusion_SfRadialMenu_WPF Condition=" '$(PkgSyncfusion_SfRadialMenu_WPF)' == '' ">C:\Users\janko\.nuget\packages\syncfusion.sfradialmenu.wpf\18.3.0.53</PkgSyncfusion_SfRadialMenu_WPF>
+  </PropertyGroup>
 </Project>

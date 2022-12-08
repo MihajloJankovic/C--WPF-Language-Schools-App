@@ -60,7 +60,18 @@ namespace LanguageSchools.Repositories
         {
             SqlConnection con = new SqlConnection("Data Source=MIHAJLO;Initial Catalog=baza_POP;Integrated Security=True");
             con.Open();
-            SqlCommand cmd = new SqlCommand("INSERT INTO Professore VALUES (@Userid,@Professorid,@schid);", con);
+            SqlCommand cmd = new SqlCommand("INSERT INTO Professore VALUES (@Userid,@schid);", con);
+
+
+
+
+
+           
+
+            cmd.Parameters.AddWithValue("@Userid",professor.User.JMBG);
+            cmd.Parameters.AddWithValue("@schid", professor.SchoolT.Id.ToString());
+            cmd.ExecuteNonQuery();
+            con.Close();
 
 
 
@@ -71,31 +82,18 @@ namespace LanguageSchools.Repositories
             int ajd = 0;
             while (reader1.Read())
             {
-                if (reader1.IsDBNull(0))
-                {
-                    ajd = 1;
-                }
-                else
-                {
-                    ajd = Convert.ToInt32(reader1.GetString(0)) + 1;
-                }
                
+                    ajd = Convert.ToInt32(reader1.GetInt32(0));
+
+                
+
 
             }
             reader1.Close();
             con1.Close();
-
-
             professor.UserId = ajd.ToString();
             repostorylang.AddToProfessor(professor);
             repostorySchool.AddProfessorSchool(professor.SchoolT.Id.ToString(), ajd.ToString());
-
-
-            cmd.Parameters.AddWithValue("@Userid",professor.User.JMBG);
-            cmd.Parameters.AddWithValue("@Professorid", ajd);
-            cmd.Parameters.AddWithValue("@schid", professor.SchoolT.Id.ToString());
-            cmd.ExecuteNonQuery();
-            con.Close();
 
         }
 
@@ -195,9 +193,16 @@ namespace LanguageSchools.Repositories
             Professor professor = new Professor();
             while (reader.Read())
             {
+                User usert = new User();
+                 String id = reader["Userid"].ToString();
+                foreach(User pera in list)
+                {
+                    if(pera.JMBG == id)
+                    {
+                        usert = pera;
+                    }
+                }
                
-                String id = reader["Userid"].ToString();
-                User usert = list.Find(e => e.JMBG == id.ToString());
                 professor.User = usert;
                 professor.UserId = reader["Professorid"].ToString();
                 int profid = Convert.ToInt32(professor.UserId);
