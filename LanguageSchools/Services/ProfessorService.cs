@@ -34,7 +34,10 @@ namespace LanguageSchools.Services
         {
             return professorRepository.GetAll();
         }
-
+        public List<Professor> GetBySchool(String idd)
+        {
+            return professorRepository.GetBySchool(idd);
+        }
         //public List<Professor> GetActiveProfessors()
         //{
         //    // baza

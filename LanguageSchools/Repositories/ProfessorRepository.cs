@@ -145,7 +145,7 @@ namespace LanguageSchools.Repositories
                     professor.Languages = pp;
                     professor.Meetings = bb;
                     professor.Languages.AddRange(repostorylang.GetByProfessor(profid));
-                    professor.Meetings.AddRange(repostorymeet.getByProfessor(profid));
+                    professor.Meetings.AddRange(repostorymeet.getByProfessor(profid, professor));
                     int schid = Convert.ToInt32(reader["schid"].ToString());
                     professor.SchoolT = repostorySchool.GetById(schid);
                     if(professor.User is not null)
@@ -188,7 +188,7 @@ namespace LanguageSchools.Repositories
 
             SqlConnection con = new SqlConnection("Data Source=MIHAJLO;Initial Catalog=baza_POP;Integrated Security=True");
             con.Open();
-            SqlCommand cmd = new SqlCommand("select * from Professore where Professorid = "+idd+";", con);
+            SqlCommand cmd = new SqlCommand("select * from Professore where Professorid = '"+idd+"';", con);
             SqlDataReader reader = cmd.ExecuteReader();
             Professor professor = new Professor();
             while (reader.Read())
@@ -211,7 +211,7 @@ namespace LanguageSchools.Repositories
                 professor.Languages = pp;
                 professor.Meetings = bb;
                 professor.Languages.AddRange(repostorylang.GetByProfessor(profid));
-                professor.Meetings.AddRange(repostorymeet.getByProfessor(profid));
+                professor.Meetings.AddRange(repostorymeet.getByProfessor(profid,professor));
                 int schid = Convert.ToInt32(reader["schid"].ToString());
                 professor.SchoolT = repostorySchool.GetById(schid);
                
@@ -225,7 +225,71 @@ namespace LanguageSchools.Repositories
 
             return professor;
         }
+        public List<Professor> GetBySchool(String idd)
+        {
+            List<User> list = new List<User>();
+            list = repostory.GetAll();
+            foreach (User user in list)
+            {
+                if (user.UserType != EUserType.PROFESSOR)
+                {
+                    list.Remove(user);
+                }
+            }
+            List<Professor> lista = new List<Professor>();
+            if (list.Count > 0)
+            {
 
+
+
+
+
+
+                SqlConnection con = new SqlConnection("Data Source=MIHAJLO;Initial Catalog=baza_POP;Integrated Security=True");
+                con.Open();
+                SqlCommand cmd = new SqlCommand("select * from Professore where schid = '"+idd+"';", con);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    Professor professor = new Professor();
+                    String id = reader["Userid"].ToString();
+                    if (id == null)
+                    {
+                        continue;
+                    }
+                    User usert = list.Find(e => e.JMBG == id.ToString());
+                    professor.User = usert;
+                    professor.UserId = reader["Professorid"].ToString();
+                    int profid = Convert.ToInt32(professor.UserId);
+                    List<Language> pp = new List<Language>();
+                    List<Meeting> bb = new List<Meeting>();
+                    professor.Languages = pp;
+                    professor.Meetings = bb;
+                    professor.Languages.AddRange(repostorylang.GetByProfessor(profid));
+                    professor.Meetings.AddRange(repostorymeet.getByProfessor(profid,professor));
+                    int schid = Convert.ToInt32(reader["schid"].ToString());
+                    professor.SchoolT = repostorySchool.GetById(schid);
+                    if (professor.User is not null)
+                    {
+                        if (professor.User.IsActive != false)
+                        {
+                            lista.Add(professor);
+                        }
+                    }
+
+                }
+                reader.Close();
+                con.Close();
+                return lista;
+
+            }
+            else
+            {
+                return lista;
+            }
+
+        }
         public void Update(Professor pera)
         {
 

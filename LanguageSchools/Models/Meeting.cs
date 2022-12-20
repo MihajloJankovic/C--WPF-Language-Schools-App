@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LanguageSchools.Models
 {
-    internal class Meeting
+    public class Meeting
     {
         public int Id { get; set; }
         public Professor Professor { get; set; }

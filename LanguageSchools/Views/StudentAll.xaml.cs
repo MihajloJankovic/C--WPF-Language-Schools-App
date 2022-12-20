@@ -86,5 +86,30 @@ namespace LanguageSchools.Views
                 dgSchools.ItemsSource = Data.Instance.studentRepository.getViewModel(schools);
             }
         }
+
+        private void sthnew(object sender, RoutedEventArgs e)
+        {
+            var sprof = dgSchools.SelectedItem as StudentV;
+            String ID = sprof.JMBG;
+            Student student = new Student();
+            student.User = new User();
+            student.User = Data.Instance.UserService.GetById(ID);
+            student.MeetingList = new List<Meeting>();
+            student.MeetingList = Data.Instance.meetingRepository.getByStudent(ID);
+            if (student != null)
+            {
+                var addEditProfessorWindow = new Scheduler(student);
+
+                var successful = addEditProfessorWindow.ShowDialog();
+
+                if ((bool)successful)
+                {
+
+                    List<User> schools = Data.Instance.studentRepository.GetAllStudents().ToList();
+
+                    dgSchools.ItemsSource = Data.Instance.studentRepository.getViewModel(schools);
+                }
+            }
+        }
     }
 }

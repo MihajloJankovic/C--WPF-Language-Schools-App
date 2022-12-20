@@ -1,0 +1,30 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LanguageSchools.Views"
+        xmlns:syncfusion="http://schemas.syncfusion.com/wpf" x:Class="LanguageSchools.Views.AddEvent"
+        mc:Ignorable="d"
+        Title="AddEvent" Height="800" Width="500">
+
+    <Grid>
+        <ComboBox SelectionChanged="cbSchool_SelectionChanged_1" DropDownClosed="cbSchool_DropDownClosed_1" x:Name="cbSchool" Margin="128,37,73,704" >
+            <UIElement.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </UIElement.RenderTransform>
+        </ComboBox>
+        <Label Content="Professor :" HorizontalAlignment="Left" Margin="37,103,0,0" VerticalAlignment="Top" Width="75"/>
+        <Label Content="School :" HorizontalAlignment="Left" Margin="49,39,0,0" VerticalAlignment="Top" Width="75"/>
+        <ComboBox x:Name="Professor" SelectionChanged="Professor_SelectionChanged" Margin="128,100,70,645" />
+        <ListBox x:Name="listbox1" Margin="130,192,67,406"/>
+        <Label Content="Language :" HorizontalAlignment="Left" Margin="39,196,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Content="Next" Name="btn" Click="Button_Click" HorizontalAlignment="Left" Margin="218,94,0,0" VerticalAlignment="Top" Height="34" Width="83"/>
+        <Button Content="make an appointment" HorizontalAlignment="Left" Margin="199,599,0,0" VerticalAlignment="Top" Height="75" Width="166" Click="Button_Click_1"/>
+    </Grid>
+</Window>

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace LanguageSchools.Models
 {
     [Serializable]
-    class Professor
+    public class Professor
     {
         [NonSerialized]
         private User user;

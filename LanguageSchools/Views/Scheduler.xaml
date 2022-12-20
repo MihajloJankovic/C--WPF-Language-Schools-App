@@ -9,7 +9,7 @@
         Title="Scheduler" Height="450" Width="800">
     <Grid>
 
-        <syncfusion:SfScheduler x:Name="Schedule" ViewType="Week"/>
+        <syncfusion:SfScheduler x:Name="Schedule"/>
 
 
     </Grid>

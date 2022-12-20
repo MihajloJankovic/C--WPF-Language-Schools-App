@@ -105,7 +105,7 @@ namespace LanguageSchools.Repositories
         {
             SqlConnection con = new SqlConnection("Data Source=MIHAJLO;Initial Catalog=baza_POP;Integrated Security=True");
             con.Open();
-            SqlCommand cmd = new SqlCommand("select * from usercina where Jmbg = " +   jmbg  + ";", con);
+            SqlCommand cmd = new SqlCommand("select * from usercina where Jmbg = '" +   jmbg  + "';", con);
             SqlDataReader reader = cmd.ExecuteReader();
             User user = new User();
             while (reader.Read())

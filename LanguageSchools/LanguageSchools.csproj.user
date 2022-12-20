@@ -13,6 +13,12 @@
     <Compile Update="Views\AddEditStudent.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\AddEvent.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\EditEvent.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\Scheduler.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -34,6 +40,12 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\AddEditStudent.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\AddEvent.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\EditEvent.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\Scheduler.xaml">

@@ -21,16 +21,57 @@ namespace LanguageSchools.Views
     /// </summary>
     public partial class Scheduler : Window
     {
+        private Student st;
         public Scheduler(ProfessorV peraa)
         {
+
             InitializeComponent();
+            Schedule.ViewType = SchedulerViewType.Week;
+            Schedule.DaysViewSettings.StartHour = 8;
+            Schedule.DaysViewSettings.EndHour = 15;
             this.Schedule.AppointmentEditorOpening += Schedule_AppointmentEditorOpening1;
             String ID = peraa.Professor;
             Professor pera = new Professor();
-
-
             pera = Data.Instance.ProfessorService.GetById(ID);
-            
+
+            var scheduleAppointmentCollection = new ScheduleAppointmentCollection();
+            foreach(Meeting p in pera.Meetings)
+                {
+                scheduleAppointmentCollection.Add(new ScheduleAppointment()
+                {
+                    StartTime = p.From,
+                    EndTime = p.To,
+                    Subject = p.Student.User.FirstName + " "+ p.Student.User.LastName,
+                });
+            }
+
+            Schedule.ItemsSource = scheduleAppointmentCollection;
+
+        }
+        public Scheduler(Student student)
+        {
+            this.st= student;
+            InitializeComponent();
+            Schedule.ViewType = SchedulerViewType.Week;
+            Schedule.DaysViewSettings.StartHour = 8;
+            Schedule.DaysViewSettings.EndHour = 15;
+            this.Schedule.AppointmentEditorOpening += Schedule_AppointmentEditorOpening1;
+          
+
+            var scheduleAppointmentCollection = new ScheduleAppointmentCollection();
+            foreach (Meeting p in student.MeetingList)
+            {
+                scheduleAppointmentCollection.Add(new ScheduleAppointment()
+                {
+                    StartTime = p.From,
+                    EndTime = p.To,
+                    Subject = p.Professor.User.FirstName + " " + p.Professor.User.LastName,
+                    Id = p.Id,
+                });
+            }
+
+            Schedule.ItemsSource = scheduleAppointmentCollection;
+
 
         }
         private void Schedule_AppointmentEditorOpening1(object? sender, AppointmentEditorOpeningEventArgs e)
@@ -39,11 +80,31 @@ namespace LanguageSchools.Views
             e.Cancel = true;
             if (e.Appointment != null)
             {
-                // e.Resource nam daje taj sastanak .
+               
+                if (this.st is null)
+                {
+
+                }
+                else
+                {
+                    var professorsWindow = new EditEvent(Convert.ToInt32(e));
+                    professorsWindow.Show();
+                    this.Hide();
+                }
             }
             else
             {
-                //Display the custom appointment editor window to add new appointment
+                if(this.st is null)
+                {
+
+                }
+                else
+                {
+
+                    var professorsWindow = new AddEvent(st,e.DateTime);
+                    professorsWindow.Show();
+                    this.Hide();
+                }
             }
         }
 

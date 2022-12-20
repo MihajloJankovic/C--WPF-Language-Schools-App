@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace LanguageSchools.Models
 {
-    internal class Student
+    public class Student
     {
-        private User user;
+        public User user;
 
         public User User { get => user; set => user = value; }
         public List<Meeting> MeetingList { get; set; }

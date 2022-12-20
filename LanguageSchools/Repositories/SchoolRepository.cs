@@ -188,7 +188,7 @@ namespace LanguageSchools.Repositories
         {
             SqlConnection con = new SqlConnection("Data Source=MIHAJLO;Initial Catalog=baza_POP;Integrated Security=True");
             con.Open();
-            SqlCommand cmd = new SqlCommand("select * from School where deleted = 'false';", con);
+            SqlCommand cmd = new SqlCommand("select * from School where deleted = 'false' and id = '"+id.ToString()+"' ;", con);
             SqlDataReader reader = cmd.ExecuteReader();
             School school = new School();
             Address address = new Address();
@@ -218,6 +218,45 @@ namespace LanguageSchools.Repositories
                 
             }
          
+
+            reader.Close();
+            con.Close();
+            return school;
+        }
+        public School GetByName(String s)
+        {
+            SqlConnection con = new SqlConnection("Data Source=MIHAJLO;Initial Catalog=baza_POP;Integrated Security=True");
+            con.Open();
+            SqlCommand cmd = new SqlCommand("select * from School where deleted = 'false' and Name ='"+s+"';", con);
+            SqlDataReader reader = cmd.ExecuteReader();
+            School school = new School();
+            Address address = new Address();
+            school.Address = address;
+            while (reader.Read())
+            {
+
+                //      user.Address.City = reader["city"].ToString();
+                school.Id = Convert.ToInt32(reader["id"].ToString());
+                school.Name = reader["Name"].ToString();
+                school.Address.Id = Convert.ToInt32(reader["Address"].ToString());
+                SqlConnection con2 = new SqlConnection("Data Source=MIHAJLO;Initial Catalog=baza_POP;Integrated Security=True");
+                con2.Open();
+                SqlCommand cmd2 = new SqlCommand("SELECT * FROM Address where id = " + school.Address.Id.ToString() + ";", con2);
+                SqlDataReader reader2 = cmd2.ExecuteReader();
+                while (reader2.Read())
+                {
+                    school.Address.Street = reader2["street"].ToString();
+                    school.Address.StreetNumber = reader2["number"].ToString();
+                    school.Address.City = reader2["city"].ToString();
+                    school.Address.Country = reader2["country"].ToString();
+                }
+
+                con2.Close();
+                reader2.Close();
+                school.Languages = Data.Instance.languageRepository.GetBySchool(school.Id);
+
+            }
+
 
             reader.Close();
             con.Close();

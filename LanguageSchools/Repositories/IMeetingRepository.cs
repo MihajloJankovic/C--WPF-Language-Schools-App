@@ -16,6 +16,6 @@ namespace LanguageSchools.Repositories
         List<Meeting> getByStudent(int id);
         List<Meeting> getByProfessor(Professor professor);
 
-
+        void Add(Meeting meeting);
     }
 }

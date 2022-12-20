@@ -16,5 +16,6 @@ namespace LanguageSchools.Repositories
         void Add(Professor professor);
   //      void Update(string email, Professor professor);
         void Delete(string email);
+       List<Professor> GetBySchool(String idd);
     }
 }

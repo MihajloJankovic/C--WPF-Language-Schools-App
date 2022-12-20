@@ -1,4 +1,5 @@
-﻿using LanguageSchools.Repositories;
+﻿using LanguageSchools.Models;
+using LanguageSchools.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,10 @@ namespace LanguageSchools.Services
         {
             meetingRepository = new MeetingRepository();
            
+        }
+        public void Add(Meeting meeting)
+        {
+            meetingRepository.Add(meeting);
         }
     }
 }
