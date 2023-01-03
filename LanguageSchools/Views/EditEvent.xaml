@@ -5,8 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LanguageSchools.Views"
         mc:Ignorable="d"
-        Title="EditEvent" Height="450" Width="800">
+        Title="EditEvent" Height="100" Width="200">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="23*"/>
+            <RowDefinition Height="19*"/>
+        </Grid.RowDefinitions>
+        <Label Content="Cancel Meeting ?" HorizontalAlignment="Left" Margin="53,13,0,0" VerticalAlignment="Top"/>
+        <Button Content="Yes" HorizontalAlignment="Left" Margin="34,6,0,0" VerticalAlignment="Top" Grid.Row="1" Click="Button_Click"/>
+        <Button Content="NO" HorizontalAlignment="Left" Margin="113,6,0,0" VerticalAlignment="Top" Grid.Row="1" Click="Button_Click_1"/>
+
     </Grid>
 </Window>

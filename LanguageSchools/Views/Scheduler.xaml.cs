@@ -87,8 +87,8 @@ namespace LanguageSchools.Views
                 }
                 else
                 {
-                    var professorsWindow = new EditEvent(Convert.ToInt32(e));
-                    professorsWindow.Show();
+                    var professorsWindow = new EditEvent(Convert.ToInt32(e.Appointment.Id));
+                    professorsWindow.ShowDialog();
                     this.Hide();
                 }
             }

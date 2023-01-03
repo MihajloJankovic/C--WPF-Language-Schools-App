@@ -20,6 +20,34 @@ namespace LanguageSchools.Repositories
 
            
         }
+        public Meeting GetMeeting(int id)
+        {
+
+            List<User> list = new List<User>();
+            SqlConnection con = new SqlConnection("Data Source=MIHAJLO;Initial Catalog=baza_POP;Integrated Security=True");
+            con.Open();
+            SqlCommand cmd = new SqlCommand("select * from Meeting where id = " + id + ";", con);
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            Meeting meeting = new Meeting();
+            while (reader.Read())
+            {
+                meeting.Id = Convert.ToInt32(reader["id"]);
+                meeting.Professor = Data.Instance.ProfessorService.GetById(reader["Professor"].ToString());
+                meeting.From = Convert.ToDateTime(reader["From"]);
+                meeting.To = Convert.ToDateTime(reader["To"]);
+                meeting.Status = Convert.ToBoolean(reader["Status"]);
+                Student st = new Student();
+                st.User = Data.Instance.UserService.GetById(reader["Student"].ToString());
+                st.MeetingList = new List<Meeting>();
+                meeting.Student = st;
+            
+
+            }
+            reader.Close();
+            con.Close();
+            return meeting;
+        }
         public void Add(Meeting meeting) 
         {
             SqlConnection con = new SqlConnection("Data Source=MIHAJLO;Initial Catalog=baza_POP;Integrated Security=True");
@@ -65,7 +93,7 @@ namespace LanguageSchools.Repositories
             List<User> list = new List<User>();
             SqlConnection con = new SqlConnection("Data Source=MIHAJLO;Initial Catalog=baza_POP;Integrated Security=True");
             con.Open();
-            SqlCommand cmd = new SqlCommand("select * from Meeting where Professor = '"+id.ToString()+"';", con);
+            SqlCommand cmd = new SqlCommand("select * from Meeting where Professor = '"+id.ToString()+"'"+"and Status = 'True'"+";", con);
             SqlDataReader reader = cmd.ExecuteReader();
 
             List <Meeting> meetings = new List<Meeting>();
@@ -110,7 +138,7 @@ namespace LanguageSchools.Repositories
             List<User> list = new List<User>();
             SqlConnection con = new SqlConnection("Data Source=MIHAJLO;Initial Catalog=baza_POP;Integrated Security=True");
             con.Open();
-            SqlCommand cmd = new SqlCommand("select * from Meeting where Student = '" + id + "';", con);
+            SqlCommand cmd = new SqlCommand("select * from Meeting where Student = '" + id + "'"+ "and Status = 'true'" + ";", con);
             SqlDataReader reader = cmd.ExecuteReader();
 
             List<Meeting> meetings = new List<Meeting>();
@@ -164,6 +192,20 @@ namespace LanguageSchools.Repositories
             cmd.ExecuteNonQuery();
             con.Close();
             AddToProfessor(pera);
+        }
+        public void UpdateMeet(int pera)
+        {
+            SqlConnection con = new SqlConnection("Data Source=MIHAJLO;Initial Catalog=baza_POP;Integrated Security=True");
+            con.Open();
+
+
+
+
+
+            SqlCommand cmd = new SqlCommand("update Meeting set Status=@Street where id = " + pera + "; ", con);
+            cmd.Parameters.AddWithValue("Street", "false");
+            cmd.ExecuteNonQuery();
+            con.Close();
         }
     }
 }
