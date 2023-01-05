@@ -165,3 +165,11 @@ C:\Users\janko\Documents\GitHub\SR3.2021.POP\LanguageSchools\obj\Debug\net6.0-wi
 C:\Users\janko\Documents\GitHub\SR3.2021.POP\LanguageSchools\obj\Debug\net6.0-windows\Views\AddEvent.baml
 C:\Users\janko\Documents\GitHub\SR3.2021.POP\LanguageSchools\obj\Debug\net6.0-windows\Views\EditEvent.g.cs
 C:\Users\janko\Documents\GitHub\SR3.2021.POP\LanguageSchools\obj\Debug\net6.0-windows\Views\EditEvent.baml
+C:\Users\janko\Documents\GitHub\SR3.2021.POP\LanguageSchools\obj\Debug\net6.0-windows\Home.g.cs
+C:\Users\janko\Documents\GitHub\SR3.2021.POP\LanguageSchools\obj\Debug\net6.0-windows\Home.baml
+C:\Users\janko\Documents\GitHub\SR3.2021.POP\LanguageSchools\obj\Debug\net6.0-windows\Views\Login.g.cs
+C:\Users\janko\Documents\GitHub\SR3.2021.POP\LanguageSchools\obj\Debug\net6.0-windows\Views\Login.baml
+C:\Users\janko\Documents\GitHub\SR3.2021.POP\LanguageSchools\obj\Debug\net6.0-windows\Views\StudentHomexaml.g.cs
+C:\Users\janko\Documents\GitHub\SR3.2021.POP\LanguageSchools\obj\Debug\net6.0-windows\Views\StudentHomexaml.baml
+C:\Users\janko\Documents\GitHub\SR3.2021.POP\LanguageSchools\obj\Debug\net6.0-windows\Views\ProfessorHome.g.cs
+C:\Users\janko\Documents\GitHub\SR3.2021.POP\LanguageSchools\obj\Debug\net6.0-windows\Views\ProfessorHome.baml

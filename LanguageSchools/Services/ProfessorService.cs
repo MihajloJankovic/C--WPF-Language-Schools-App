@@ -48,7 +48,10 @@ namespace LanguageSchools.Services
            professorRepository.Add(professor);
         
         }
-
+        public Professor GetByIdSec(String idd)
+        {
+            return professorRepository.GetByIdSec(idd);
+        }
         public void Update(Professor pera)
         {
           professorRepository.Update(pera);

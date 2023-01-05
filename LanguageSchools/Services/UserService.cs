@@ -36,7 +36,10 @@ namespace LanguageSchools.Services
              repostory.Delete(email);
         }
 
-
+        public int CheckLogin(string jmbg, String sifra)
+        {
+            return repostory.CheckLogin(jmbg, sifra);
+        }
 
         public List<User> GetAll()
         {

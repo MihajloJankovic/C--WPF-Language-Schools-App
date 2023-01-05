@@ -216,8 +216,17 @@ namespace LanguageSchools.Views
                 mt.To = dt.AddHours(1);
                 mt.Status = true;
                 Data.Instance.meetingRepository.Add(mt);
-
+                st.MeetingList.Add(mt);
+                this.Close();
             }
+        }
+
+        private void DataWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            Scheduler pera1 = new Scheduler(this.st);
+            pera1.Show();
+           
+
         }
     }
 }

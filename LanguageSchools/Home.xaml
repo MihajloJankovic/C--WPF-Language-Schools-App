@@ -1,0 +1,21 @@
+﻿<Window x:Class="LanguageSchools.Views.Home"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LanguageSchools.Views"
+        mc:Ignorable="d"
+        Title="Home" Height="450" Width="800">
+    <Grid>
+        <Button Content="Register" HorizontalAlignment="Left" Margin="550,74,0,0" VerticalAlignment="Top" Height="43" Width="71" Click="Button_Click"/>
+        <Button Content="Login" HorizontalAlignment="Left" Margin="412,75,0,0" VerticalAlignment="Top" Height="43" Width="71" Click="Button_Click_1"/>
+        <Button Content="Schools" HorizontalAlignment="Left" Margin="48,179,0,0" VerticalAlignment="Top" Height="43" Width="184"/>
+        <Button Content="Professors" HorizontalAlignment="Left" Margin="51,273,0,0" VerticalAlignment="Top" Height="43" Width="184"/>
+        <Image HorizontalAlignment="Left" Height="368" Margin="272,153,0,0" VerticalAlignment="Top" Width="463" RenderTransformOrigin="0.532,0.755">
+            <Image.Source>
+                <BitmapImage DecodePixelWidth="300" UriSource="C:\Users\janko\Documents\GitHub\SR3.2021.POP\LanguageSchools\Resources\International-Flags.jpg" />
+            </Image.Source>
+        </Image>
+
+    </Grid>
+</Window>

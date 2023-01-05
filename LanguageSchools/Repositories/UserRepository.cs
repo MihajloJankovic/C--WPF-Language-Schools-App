@@ -144,7 +144,21 @@ namespace LanguageSchools.Repositories
             con.Close();
             return user;
         }
-
+        public int CheckLogin(string jmbg,String sifra)
+        {
+            SqlConnection con = new SqlConnection("Data Source=MIHAJLO;Initial Catalog=baza_POP;Integrated Security=True");
+            con.Open();
+            SqlCommand cmd = new SqlCommand("select count(jmbg) from usercina where Jmbg = '" + jmbg + "' and Password = '"+sifra+ "' and IsActive='true';", con);
+            SqlDataReader reader = cmd.ExecuteReader();
+            int broj=0;
+            while (reader.Read())
+            {
+                 broj = reader.GetInt32(0);
+            }
+            reader.Close();
+            con.Close();
+            return broj;
+        }
         public void Update(User user)
         {
             SqlConnection con = new SqlConnection("Data Source=MIHAJLO;Initial Catalog=baza_POP;Integrated Security=True");

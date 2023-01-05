@@ -1,0 +1,17 @@
+﻿<Window x:Class="LanguageSchools.Views.Login"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LanguageSchools.Views"
+        mc:Ignorable="d"
+        Title="Login" Height="300" Width="323">
+    <Grid>
+        <Button Content="Login" HorizontalAlignment="Left" Margin="113,208,0,0" VerticalAlignment="Top" Height="32" Width="91" Click="Button_Click"/>
+        <Label Content="Jmbg :" RenderTransformOrigin="0.307,0.186" Margin="80,52,130,197"/>
+        <Label Content="Password :" RenderTransformOrigin="0.307,0.186" Margin="61,98,149,151"/>
+        <TextBox HorizontalAlignment="Left" Margin="134,53,0,0" TextWrapping="Wrap" Name="JMBG" PreviewTextInput="NumberValidationTextBox"  VerticalAlignment="Top" Width="120"/>
+        <PasswordBox HorizontalAlignment="Left"  Margin="137,97,0,0"  Name="sifra" VerticalAlignment="Top" Width="120"/>
+
+    </Grid>
+</Window>

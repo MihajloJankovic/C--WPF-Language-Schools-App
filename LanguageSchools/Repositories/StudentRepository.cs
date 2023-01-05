@@ -108,7 +108,7 @@ namespace LanguageSchools.Repositories
           
                SqlConnection con = new SqlConnection("Data Source=MIHAJLO;Initial Catalog=baza_POP;Integrated Security=True");
                con.Open();
-               SqlCommand cmd = new SqlCommand("select * from usercina where usertype = 'STUDENT' and IsActive='true' and userid = " + id.ToString()+";", con);
+               SqlCommand cmd = new SqlCommand("select * from usercina where usertype = 'STUDENT' and IsActive='true' and JMBG = '" + id.ToString()+"';", con);
                SqlDataReader reader = cmd.ExecuteReader();
             Student student = new Student();
             while (reader.Read())
@@ -140,14 +140,15 @@ namespace LanguageSchools.Repositories
                     user.Address.City = reader1["city"].ToString();
                     user.Address.Country = reader1["country"].ToString();
                     student.User= user;
-                    return student;
+                   
                 }
                 reader1.Close();
                 con1.Close();
             }
             reader.Close();
             con.Close();
-
+            student.MeetingList = new List<Meeting>();
+            student.MeetingList.AddRange(Data.Instance.meetingRepository.getByStudent(student.User.JMBG));
             return student;
         }
     }

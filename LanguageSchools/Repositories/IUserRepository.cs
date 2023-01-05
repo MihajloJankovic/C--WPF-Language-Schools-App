@@ -15,5 +15,6 @@ namespace LanguageSchools.Repositories
         void Update(User user);
         User GetById(string jmbg);
         void Delete(string email);
+        public int CheckLogin(string jmbg, String sifra);
     }
 }

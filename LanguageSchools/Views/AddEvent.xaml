@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:LanguageSchools.Views"
         xmlns:syncfusion="http://schemas.syncfusion.com/wpf" x:Class="LanguageSchools.Views.AddEvent"
         mc:Ignorable="d"
-        Title="AddEvent" Height="800" Width="500">
+        Title="AddEvent" Height="800" Width="500"
+        Closing="DataWindow_Closing" >
 
     <Grid>
         <ComboBox SelectionChanged="cbSchool_SelectionChanged_1" DropDownClosed="cbSchool_DropDownClosed_1" x:Name="cbSchool" Margin="128,37,73,704" >

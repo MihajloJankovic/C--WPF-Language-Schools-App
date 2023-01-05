@@ -42,6 +42,7 @@ namespace LanguageSchools.Views
                     StartTime = p.From,
                     EndTime = p.To,
                     Subject = p.Student.User.FirstName + " "+ p.Student.User.LastName,
+                    
                 });
             }
 
@@ -94,16 +95,19 @@ namespace LanguageSchools.Views
             }
             else
             {
-                if(this.st is null)
+                if(e.DateTime < DateTime.Now.AddMonths(1))
                 {
+                    if (this.st is null)
+                    {
 
-                }
-                else
-                {
+                    }
+                    else
+                    {
 
-                    var professorsWindow = new AddEvent(st,e.DateTime);
-                    professorsWindow.Show();
-                    this.Hide();
+                        var professorsWindow = new AddEvent(st, e.DateTime);
+                        professorsWindow.Show();
+                        this.Hide();
+                    }
                 }
             }
         }

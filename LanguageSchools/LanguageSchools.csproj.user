@@ -19,6 +19,15 @@
     <Compile Update="Views\EditEvent.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Home.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Login.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\ProfessorHome.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\Scheduler.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -26,6 +35,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\StudentAll.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\StudentHomexaml.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -48,6 +60,15 @@
     <Page Update="Views\EditEvent.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Home.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Login.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\ProfessorHome.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Views\Scheduler.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -58,6 +79,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\StudentAll.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\StudentHomexaml.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

@@ -225,6 +225,62 @@ namespace LanguageSchools.Repositories
 
             return professor;
         }
+        public Professor GetByIdSec(String idd)
+        {
+
+            List<User> list = new List<User>();
+            list = repostory.GetAll();
+            foreach (User user in list)
+            {
+                if (user.UserType != EUserType.PROFESSOR)
+                {
+                    list.Remove(user);
+                }
+            }
+
+
+
+
+
+            SqlConnection con = new SqlConnection("Data Source=MIHAJLO;Initial Catalog=baza_POP;Integrated Security=True");
+            con.Open();
+            SqlCommand cmd = new SqlCommand("select * from Professore where Userid = '" + idd + "';", con);
+            SqlDataReader reader = cmd.ExecuteReader();
+            Professor professor = new Professor();
+            while (reader.Read())
+            {
+                User usert = new User();
+                String id = reader["Userid"].ToString();
+                foreach (User pera in list)
+                {
+                    if (pera.JMBG == id)
+                    {
+                        usert = pera;
+                    }
+                }
+                
+                professor.User = usert;
+                professor.UserId = reader["Professorid"].ToString();
+                int profid = Convert.ToInt32(professor.UserId);
+                List<Language> pp = new List<Language>();
+                List<Meeting> bb = new List<Meeting>();
+                professor.Languages = pp;
+                professor.Meetings = bb;
+                professor.Languages.AddRange(repostorylang.GetByProfessor(profid));
+                professor.Meetings.AddRange(repostorymeet.getByProfessor(profid, professor));
+                int schid = Convert.ToInt32(reader["schid"].ToString());
+                professor.SchoolT = repostorySchool.GetById(schid);
+
+
+            }
+            reader.Close();
+            con.Close();
+
+
+
+
+            return professor;
+        }
         public List<Professor> GetBySchool(String idd)
         {
             List<User> list = new List<User>();
