@@ -20,11 +20,25 @@ namespace LanguageSchools.Views
     /// </summary>
     public partial class StudentHomexaml : Window
     {
-        Student pera;
+        Student peraa;
         public StudentHomexaml(String Student)
         {
             InitializeComponent();
-            this.pera = Data.Instance.studentRepository.GetById(Student);
+            this.peraa = Data.Instance.studentRepository.GetById(Student);
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            StudentV pp = new StudentV();
+            pp.JMBG = peraa.User.JMBG;
+            AddEditStudent pera = new AddEditStudent(pp);
+            var result = pera.ShowDialog();
+            if (result == true)
+            {
+                peraa.User = pera.st.User;
+
+
+            }
         }
     }
 }

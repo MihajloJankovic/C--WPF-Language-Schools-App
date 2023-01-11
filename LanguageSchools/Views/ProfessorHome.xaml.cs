@@ -8,6 +8,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -25,6 +26,20 @@ namespace LanguageSchools.Views
         {
             InitializeComponent();
             this.professor = Data.Instance.ProfessorService.GetByIdSec(prof);
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            StudentV pp = new StudentV();
+            pp.JMBG = professor.User.JMBG;
+            AddEditStudent pera = new AddEditStudent(pp);
+            var result =  pera.ShowDialog();
+            if (result == true)
+            {
+                professor.User = pera.st.User;   
+            
+                
+            }
         }
     }
 }

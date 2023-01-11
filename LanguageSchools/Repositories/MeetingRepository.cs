@@ -191,7 +191,7 @@ namespace LanguageSchools.Repositories
             //cmd.Parameters.AddWithValue("@Professor",id.ToString());
             cmd.ExecuteNonQuery();
             con.Close();
-            AddToProfessor(pera);
+           
         }
         public void UpdateMeet(int pera)
         {

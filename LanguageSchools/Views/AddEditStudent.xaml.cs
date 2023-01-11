@@ -23,7 +23,7 @@ namespace LanguageSchools.Views
     public partial class AddEditStudent : Window
     {
         int g = 0;
-        Student st;
+        public Student st;
         public AddEditStudent()
         {
             InitializeComponent();
@@ -278,9 +278,11 @@ namespace LanguageSchools.Views
                                         korisnik.Address.City = lastnamex.Text;
                                         korisnik.Gender = Enum.Parse<EGender>(cbGender.SelectedItem.ToString());
                                         korisnik.JMBG = st.User.JMBG;
+                                        korisnik.Address.Id = st.User.Address.Id;
                                         korisnik.IsActive = true;
-                                korisnik.UserType = EUserType.STUDENT;
+                                        korisnik.UserType = EUserType.STUDENT;
                                         Data.Instance.UserService.Update(korisnik);
+                                        st.User = korisnik;
                                         DialogResult = true;
                                         Close();
                                     

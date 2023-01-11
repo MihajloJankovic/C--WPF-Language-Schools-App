@@ -7,6 +7,8 @@
         mc:Ignorable="d"
         Title="StudentHomexaml" Height="450" Width="800">
     <Grid>
-        
+        <Button Content="My Profile" HorizontalAlignment="Left" Margin="659,38,0,0" VerticalAlignment="Top" Height="42" Width="91" Click="Button_Click"/>
+        <Button Content="Meetings" HorizontalAlignment="Left" Margin="277,158,0,0" VerticalAlignment="Top" Height="105" Width="237"/>
+
     </Grid>
 </Window>

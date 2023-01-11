@@ -175,7 +175,7 @@ namespace LanguageSchools.Repositories
             cmd.ExecuteNonQuery();
             SqlConnection con1 = new SqlConnection("Data Source=MIHAJLO;Initial Catalog=baza_POP;Integrated Security=True");
             con1.Open();
-            SqlCommand cmd1 = new SqlCommand("update Address set street = @Street,number=@Number,city=@City,country=@Country where id = "+user.Address.Id.ToString() +";", con1);
+            SqlCommand cmd1 = new SqlCommand("update Address set street = @Street,number=@Number,city=@City,country=@Country where id = '"+user.Address.Id.ToString() +"';", con1);
             cmd1.Parameters.AddWithValue("Street", user.Address.Street);
             cmd1.Parameters.AddWithValue("@Number", user.Address.StreetNumber);
             cmd1.Parameters.AddWithValue("@City", user.Address.City);
