@@ -8,7 +8,8 @@
         Title="ProfessorHome" Height="450" Width="800">
     <Grid>
         <Button Content="My Profile" HorizontalAlignment="Left" Margin="640,38,0,0" VerticalAlignment="Top" Height="46" Width="96" Click="Button_Click"/>
-        <Button Content="My Meetings" HorizontalAlignment="Left" Margin="300,150,0,0" VerticalAlignment="Top" Height="116" Width="189"/>
+        <Button Content="My Meetings" HorizontalAlignment="Left" Margin="300,150,0,0" VerticalAlignment="Top" Height="116" Width="189" Click="Button_Click_1"/>
+        <Button Content="Log out" HorizontalAlignment="Left" Margin="652,356,0,0" VerticalAlignment="Top" Height="43" Width="83" Click="Button_Click_2"/>
 
     </Grid>
 </Window>

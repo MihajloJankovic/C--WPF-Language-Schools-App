@@ -28,6 +28,10 @@ namespace LanguageSchools.Services
         {
             schoolRepo.Add(school);
         }
+        public List<School> sch(String pera)
+        {
+            return schoolRepo.sch(pera);
+        }
         public List<School> GetAll()
         {
             return schoolRepo.GetAll();

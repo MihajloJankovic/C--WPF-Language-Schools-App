@@ -14,5 +14,6 @@ namespace LanguageSchools.Services
         School GetByProfessor(int id);
         List<School> GetAll();
         void AddProfessorSchool(String school, String professor);
+        public List<School> sch(String pera);
     }
 }

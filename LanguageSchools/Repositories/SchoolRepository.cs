@@ -182,6 +182,89 @@ namespace LanguageSchools.Repositories
 
             return schools;
         }
+        public List<School> sch(String tekst)
+        {
+            List<School> schools = new List<School>();
+            List<School> skole = new List<School>();
+
+            SqlConnection con2 = new SqlConnection("Data Source=MIHAJLO;Initial Catalog=baza_POP;Integrated Security=True");
+            con2.Open();
+            SqlCommand cmd2 = new SqlCommand("SELECT * FROM School where deleted = 'false' and (Name like ('%"+tekst+"%'));", con2);
+            SqlDataReader reader2 = cmd2.ExecuteReader();
+            if (reader2.HasRows)
+            {
+                while (reader2.Read())
+                {
+                    School school = new School();
+                    school.Languages = new List<Language>();
+                    school.Id = Convert.ToInt32(reader2["id"].ToString());
+                    school.Name = reader2["Name"].ToString();
+                    int addressid = Convert.ToInt32(reader2["Address"].ToString());
+                    bool ss = Convert.ToBoolean(reader2["deleted"].ToString());
+                    school.Address = new Address();
+                    school.IsDeleted = ss;
+                    school.Address = repostoryadres.GetById(addressid);
+                    school.Languages.AddRange(repostorylang.GetBySchool(school.Id));
+
+
+                    skole.Add(school);
+
+                }
+            }
+            else
+            {
+
+
+                SqlConnection con3 = new SqlConnection("Data Source=MIHAJLO;Initial Catalog=baza_POP;Integrated Security=True");
+                con3.Open();
+                SqlCommand cmd3 = new SqlCommand("SELECT * FROM School where deleted = 'false';", con3);
+                SqlDataReader reader3 = cmd3.ExecuteReader();
+                while (reader3.Read())
+                {
+                    School school = new School();
+                    school.Languages = new List<Language>();
+                    school.Id = Convert.ToInt32(reader3["id"].ToString());
+                    school.Name = reader3["Name"].ToString();
+                    int addressid = Convert.ToInt32(reader3["Address"].ToString());
+                    bool ss = Convert.ToBoolean(reader3["deleted"].ToString());
+                    school.Address = new Address();
+                    school.IsDeleted = ss;
+                    school.Address = repostoryadres.GetById(addressid);
+                    school.Languages.AddRange(repostorylang.GetBySchool(school.Id));
+
+
+                    schools.Add(school);
+
+                }
+
+
+
+
+                List <Address> pera =  repostoryadres.GetSch(tekst);
+                    foreach(School sk in schools) 
+                    { 
+                        foreach(Address a in pera)
+                          {
+                                if(sk.Address.Street== a.Street ^ sk.Address.City == a.City ^ sk.Address.Country == a.Country)
+                                     {
+                                        skole.Add(sk);
+                                      }
+                          }
+                    }
+                
+            }
+         
+
+            con2.Close();
+            reader2.Close();
+
+
+
+
+
+
+            return skole;
+        }
 
 
         public School GetById(int id)

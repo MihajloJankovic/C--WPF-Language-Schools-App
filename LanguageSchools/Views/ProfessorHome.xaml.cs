@@ -41,5 +41,20 @@ namespace LanguageSchools.Views
                 
             }
         }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            ProfessorV gg = new ProfessorV();
+            gg.Professor = professor.UserId;
+            Scheduler pera = new Scheduler(gg);
+            pera.ShowDialog();
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            Home pera = new Home();
+            pera.Show();
+            this.Close();
+        }
     }
 }

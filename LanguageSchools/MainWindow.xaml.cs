@@ -56,6 +56,10 @@ namespace LanguageSchools
 
         private void btnadg_Click(object sender, RoutedEventArgs e)
         {
+
+            var professorsWindow = new Home();
+            professorsWindow.Show();
+            this.Hide();
             Close();
         }
        

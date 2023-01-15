@@ -25,6 +25,28 @@ namespace LanguageSchools.Repositories
             cmd.ExecuteNonQuery();
             con.Close();
         }
+        public List<Address> GetSch(String tekst)
+        {
+            List<Address> pera = new List<Address>();
+            Address address = new Address();
+            SqlConnection con2 = new SqlConnection("Data Source=MIHAJLO;Initial Catalog=baza_POP;Integrated Security=True");
+            con2.Open();
+            SqlCommand cmd2 = new SqlCommand("SELECT * FROM Address where street like ('%"+tekst+ "%') or city like ('%" + tekst+ "%') or country like ('%" + tekst+ "%');", con2);
+            SqlDataReader reader2 = cmd2.ExecuteReader();
+            while (reader2.Read())
+            {
+                Address gg = new Address();
+                gg.Street = reader2["street"].ToString();
+                gg.StreetNumber = reader2["number"].ToString();
+                gg.City = reader2["city"].ToString();
+                gg.Country = reader2["country"].ToString();
+                pera.Add(gg);
+            }
+
+            con2.Close();
+            reader2.Close();
+            return pera;
+        }
         public Address GetById(int id)
         {
             Address address = new Address();
