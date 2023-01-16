@@ -52,6 +52,10 @@ namespace LanguageSchools.Services
         {
             return professorRepository.GetByIdSec(idd);
         }
+        public List<Professor> GetSch(String tekst)
+        {
+            return professorRepository.GetSch(tekst);
+        }
         public void Update(Professor pera)
         {
           professorRepository.Update(pera);

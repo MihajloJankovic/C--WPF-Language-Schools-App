@@ -41,5 +41,19 @@ namespace LanguageSchools.Views
                this.Close();
             }
         }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            var pera = new ShowSchools(false);
+            pera.ShowDialog();
+            
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            var pera = new ShowProfessorsWindow(false);
+            pera.ShowDialog();
+            
+        }
     }
 }

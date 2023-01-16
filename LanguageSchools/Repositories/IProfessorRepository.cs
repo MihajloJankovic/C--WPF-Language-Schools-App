@@ -18,6 +18,7 @@ namespace LanguageSchools.Repositories
         void Delete(string email);
        List<Professor> GetBySchool(String idd);
         public Professor GetByIdSec(String idd);
+        public List<Professor> GetSch(String tekst);
 
 
     }

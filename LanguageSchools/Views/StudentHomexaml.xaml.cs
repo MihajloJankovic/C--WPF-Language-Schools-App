@@ -40,5 +40,32 @@ namespace LanguageSchools.Views
 
             }
         }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            Scheduler pera = new Scheduler(peraa);
+            pera.ShowDialog();
+            
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            var s = new ShowProfessorsWindow(peraa);
+            s.ShowDialog();
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            var s = new ShowSchools(peraa);
+            s.ShowDialog();
+
+        }
+
+        private void DataWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            var g = new Home();
+            g.Show();
+            
+        }
     }
 }

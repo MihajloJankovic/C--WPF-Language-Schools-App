@@ -36,6 +36,7 @@ namespace LanguageSchools.Views
         {
             cas.Status = false;
             Data.Instance.meetingRepository.UpdateMeet(cas.Id);
+            DialogResult = true;
             this.Close();
 
         }

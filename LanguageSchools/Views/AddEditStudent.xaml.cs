@@ -58,7 +58,7 @@ namespace LanguageSchools.Views
             City.Visibility = Visibility.Hidden;
             //next.Visibility = Visibility.Visible;
             btnSave.Visibility = Visibility.Hidden;
-          
+            txtJMBG.IsReadOnly = true;
 
             g = 0;
 
@@ -97,69 +97,80 @@ namespace LanguageSchools.Views
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (txtEmail.Text.Length > 5)
+            if (Data.Instance.meetingRepository.jmbg(txtJMBG.Text) == false ^  st is not null)
             {
-                if (txtPassword.Text.Length > 5)
+                if (txtEmail.Text.Length > 5)
                 {
-                    if (txtFirstName.Text.Length > 3)
+                    if (txtPassword.Text.Length > 5)
                     {
-                        if (txtLastName.Text.Length > 3)
+                        if (txtFirstName.Text.Length > 3)
                         {
-                            if (txtJMBG.Text.Length > 10)
+                            if (txtLastName.Text.Length > 3)
                             {
-                                passwordx.Visibility = Visibility.Visible;
-                                emailx.Visibility = Visibility.Visible;
-                                lastnamex.Visibility = Visibility.Visible;
-                                firstnamex.Visibility = Visibility.Visible;
-                                Street__.Visibility = Visibility.Visible;
-                                Number_.Visibility = Visibility.Visible;
-                                Country.Visibility = Visibility.Visible;
-                                City.Visibility = Visibility.Visible;
-                                next.Visibility = Visibility.Hidden;
-                                btnSave.Visibility = Visibility.Visible;
-                              
+                                if (txtJMBG.Text.Length > 10)
+                                {
+                                    passwordx.Visibility = Visibility.Visible;
+                                    emailx.Visibility = Visibility.Visible;
+                                    lastnamex.Visibility = Visibility.Visible;
+                                    firstnamex.Visibility = Visibility.Visible;
+                                    Street__.Visibility = Visibility.Visible;
+                                    Number_.Visibility = Visibility.Visible;
+                                    Country.Visibility = Visibility.Visible;
+                                    City.Visibility = Visibility.Visible;
+                                    next.Visibility = Visibility.Hidden;
+                                    btnSave.Visibility = Visibility.Visible;
 
-                                lblEmail.Visibility = Visibility.Hidden;
-                                lblFirstName.Visibility = Visibility.Hidden;
-                                lblGender.Visibility = Visibility.Hidden;
-                                lblJMBG.Visibility = Visibility.Hidden;
-                                lblLastName.Visibility = Visibility.Hidden;
-                                lblPassword.Visibility = Visibility.Hidden;
-                                txtEmail.Visibility = Visibility.Hidden;
-                                txtFirstName.Visibility = Visibility.Hidden;
-                                txtJMBG.Visibility = Visibility.Hidden;
-                                txtLastName.Visibility = Visibility.Hidden;
-                                txtPassword.Visibility = Visibility.Hidden;
-                                cbGender.Visibility = Visibility.Hidden;
-                                List<School> skola = new List<School>();
 
-                               
+                                    lblEmail.Visibility = Visibility.Hidden;
+                                    lblFirstName.Visibility = Visibility.Hidden;
+                                    lblGender.Visibility = Visibility.Hidden;
+                                    lblJMBG.Visibility = Visibility.Hidden;
+                                    lblLastName.Visibility = Visibility.Hidden;
+                                    lblPassword.Visibility = Visibility.Hidden;
+                                    txtEmail.Visibility = Visibility.Hidden;
+                                    txtFirstName.Visibility = Visibility.Hidden;
+                                    txtJMBG.Visibility = Visibility.Hidden;
+                                    txtLastName.Visibility = Visibility.Hidden;
+                                    txtPassword.Visibility = Visibility.Hidden;
+                                    cbGender.Visibility = Visibility.Hidden;
+                                    List<School> skola = new List<School>();
+
+
+                                }
+                                else
+                                {
+                                    MessageBox.Show("JMBG too Short!");
+                                }
+
                             }
                             else
                             {
-                                MessageBox.Show("JMBG too Short!");
+                                MessageBox.Show("LastName too short!");
                             }
-
                         }
                         else
                         {
-                            MessageBox.Show("LastName too short!");
+                            MessageBox.Show("Name to short!");
                         }
                     }
                     else
                     {
-                        MessageBox.Show("Name to short!");
+                        MessageBox.Show("Password too short!");
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Password too short!");
+                    MessageBox.Show("Email too short!");
                 }
             }
             else
             {
-                MessageBox.Show("Email too short!");
+                MessageBox.Show("JMBG allready used contact admin for help !");
+
+
+
             }
+            
         }
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
@@ -195,6 +206,7 @@ namespace LanguageSchools.Views
 
 
 
+                
                     if (emailx.Text.Length > 3)
                     {
                         if (passwordx.Text.Length >= 1)
@@ -203,31 +215,31 @@ namespace LanguageSchools.Views
                             {
                                 if (lastnamex.Text.Length > 3)
                                 {
-                                  
-
-                                        SqlConnection con = new SqlConnection("Data Source=MIHAJLO;Initial Catalog=baza_POP;Integrated Security=True");
-                                        con.Open();
-                                        SqlCommand cmd = new SqlCommand("SELECT max(id) FROM Address;", con);
-                                        SqlDataReader reader = cmd.ExecuteReader();
 
 
-                                        while (reader.Read())
-                                        {
-                                            korisnik.Address.Id = (reader.GetInt32(0)) + 1;
-                                        }
+                                    SqlConnection con = new SqlConnection("Data Source=MIHAJLO;Initial Catalog=baza_POP;Integrated Security=True");
+                                    con.Open();
+                                    SqlCommand cmd = new SqlCommand("SELECT max(id) FROM Address;", con);
+                                    SqlDataReader reader = cmd.ExecuteReader();
 
-                                        // Call Close when done reading.
-                                        reader.Close();
-                                        Data.Instance.UserService.Add(korisnik);
-                                        
 
-                                        
-                                      
-                                        
+                                    while (reader.Read())
+                                    {
+                                        korisnik.Address.Id = (reader.GetInt32(0)) + 1;
+                                    }
 
-                                        DialogResult = true;
-                                        Close();
-                                   
+                                    // Call Close when done reading.
+                                    reader.Close();
+                                    Data.Instance.UserService.Add(korisnik);
+
+
+
+
+
+
+                                    DialogResult = true;
+                                    Close();
+
                                 }
                                 else
                                 {
@@ -248,8 +260,8 @@ namespace LanguageSchools.Views
                     {
                         MessageBox.Show("street name too short");
                     }
-                
-            }
+                }
+            
             if (g == 0)
             {
 

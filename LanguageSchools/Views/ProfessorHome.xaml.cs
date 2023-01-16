@@ -56,5 +56,12 @@ namespace LanguageSchools.Views
             pera.Show();
             this.Close();
         }
+
+        private void DataWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            var g = new Home();
+            g.Show();
+          
+        }
     }
 }

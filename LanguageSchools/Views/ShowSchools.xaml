@@ -19,6 +19,7 @@
             <MenuItem Name="miAddSchool" Height="30" Header="Add School" Click="miAddSchool_Click"></MenuItem>
             <MenuItem Name="miUpdateSchool" Height="30" Header="Update school" Click="miUpdateSchool_Click"></MenuItem>
             <MenuItem x:Name="miDeleteProfessor" Height="30" Header="Delete School" Click="DeleteSch"/>
+            <MenuItem x:Name="professors" Header="Show Professors" Click="professors_Click" />
             <TextBox TextWrapping="Wrap" Width="167" Name="sch" TextChanged="sch_TextChanged_1"/>
             <ListBox x:Name="listbox1" Height="130"  Width="539"/>
             <Button Content="Chose" Height="49" Width="129" RenderTransformOrigin="0.791,0.466" Click="Button_Click"/>
@@ -34,5 +35,6 @@
 
 
         </DataGrid>
+        
     </Grid>
 </Window>

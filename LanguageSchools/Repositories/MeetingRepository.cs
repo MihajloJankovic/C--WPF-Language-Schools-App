@@ -20,6 +20,27 @@ namespace LanguageSchools.Repositories
 
            
         }
+        public bool jmbg(String jm)
+        {
+            SqlConnection con = new SqlConnection("Data Source=MIHAJLO;Initial Catalog=baza_POP;Integrated Security=True");
+            con.Open();
+            SqlCommand cmd = new SqlCommand("select Count(Jmbg) from usercina where Jmbg = '" + jm + "';", con);
+            SqlDataReader reader = cmd.ExecuteReader();
+            bool da = false;
+            int daA = 0;
+            while (reader.Read()) 
+            {
+                  daA = Convert.ToInt32(reader[0]);
+
+            }
+            reader.Close();
+            con.Close();
+            if(daA > 0 ) 
+            {
+                return true;
+            }
+            return false;
+        }
         public Meeting GetMeeting(int id)
         {
 

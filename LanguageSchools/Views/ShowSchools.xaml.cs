@@ -21,9 +21,12 @@ namespace LanguageSchools.Views
     /// </summary>
     public partial class ShowSchools : Window
     {
+        private Student st;
+        private bool s;
         public ShowSchools()
         {
             InitializeComponent();
+            professors.Visibility = Visibility.Hidden;
             List<String> str = new List<String>();
             List<Language> jezici = new List<Language>();
             jezici.AddRange(Data.Instance.languageRepository.GetAll());
@@ -40,6 +43,55 @@ namespace LanguageSchools.Views
             
             dgSchools.ItemsSource = Data.Instance.SchoolService.getViewModel(schools);
             
+        }
+        public ShowSchools(Student st)
+        {
+            InitializeComponent();
+            this.st = st;
+            miDeleteProfessor.Visibility = Visibility.Hidden;
+            miAddSchool.Visibility = Visibility.Hidden;
+            miUpdateSchool.Visibility = Visibility.Hidden;
+            List<String> str = new List<String>();
+            List<Language> jezici = new List<Language>();
+            jezici.AddRange(Data.Instance.languageRepository.GetAll());
+            foreach (Language lang in jezici)
+            {
+                str.Add(lang.Jezik);
+            }
+            listbox1.SelectionMode = SelectionMode.Multiple;
+            listbox1.ItemsSource = str;
+
+            List<School> schools = Data.Instance.SchoolService.GetAll().ToList();
+
+
+
+            dgSchools.ItemsSource = Data.Instance.SchoolService.getViewModel(schools);
+
+        }
+        public ShowSchools(bool st)
+        {
+            InitializeComponent();
+            s = st;
+            miDeleteProfessor.Visibility = Visibility.Hidden;
+            miAddSchool.Visibility = Visibility.Hidden;
+            miUpdateSchool.Visibility = Visibility.Hidden;
+            professors.Visibility = Visibility.Hidden;
+            List<String> str = new List<String>();
+            List<Language> jezici = new List<Language>();
+            jezici.AddRange(Data.Instance.languageRepository.GetAll());
+            foreach (Language lang in jezici)
+            {
+                str.Add(lang.Jezik);
+            }
+            listbox1.SelectionMode = SelectionMode.Multiple;
+            listbox1.ItemsSource = str;
+
+            List<School> schools = Data.Instance.SchoolService.GetAll().ToList();
+
+
+
+            dgSchools.ItemsSource = Data.Instance.SchoolService.getViewModel(schools);
+
         }
 
         private void miAddSchool_Click(object sender, RoutedEventArgs e)
@@ -78,8 +130,26 @@ namespace LanguageSchools.Views
         }
         void DataWindow_Closing(object sender, CancelEventArgs e)
         {
-            MainWindow pera = new MainWindow();
-            pera.Show();
+            if(s = true)
+            {
+
+            }
+            if (this.st is not null)
+            {
+              
+            }
+            else
+            {
+                if (s = true)
+                {
+
+                }
+                else
+                {
+                    MainWindow pera = new MainWindow();
+                    pera.Show();
+                }
+            }
         }
         private void DeleteSch(object sender, RoutedEventArgs e)
         {
@@ -249,6 +319,25 @@ namespace LanguageSchools.Views
 
 
                 dgSchools.ItemsSource = Data.Instance.SchoolService.getViewModel(skolee);
+            }
+        }
+
+        private void professors_Click(object sender, RoutedEventArgs e)
+        {
+            var sprof = dgSchools.SelectedItem as SchoolV;
+            if (sprof != null)
+            {
+                var addEditProfessorWindow = new ShowProfessorsWindow(st,sprof.School);
+
+                var successful = addEditProfessorWindow.ShowDialog();
+
+                if ((bool)successful)
+                {
+
+                    List<School> schools = Data.Instance.SchoolService.GetAll().ToList();
+
+                    dgSchools.ItemsSource = Data.Instance.SchoolService.getViewModel(schools);
+                }
             }
         }
     }

@@ -4,11 +4,13 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LanguageSchools.Views"
-        mc:Ignorable="d"
+        mc:Ignorable="d" Closing="DataWindow_Closing"
         Title="StudentHomexaml" Height="450" Width="800">
     <Grid>
         <Button Content="My Profile" HorizontalAlignment="Left" Margin="659,38,0,0" VerticalAlignment="Top" Height="42" Width="91" Click="Button_Click"/>
-        <Button Content="Meetings" HorizontalAlignment="Left" Margin="277,158,0,0" VerticalAlignment="Top" Height="105" Width="237"/>
+        <Button Content="My Meetings" HorizontalAlignment="Left" Margin="463,176,0,0" VerticalAlignment="Top" Height="105" Width="237" Click="Button_Click_1"/>
+        <Button Content="Schools" HorizontalAlignment="Left" Margin="73,66,0,0" VerticalAlignment="Top" Height="97" Width="192" Click="Button_Click_3"/>
+        <Button Content="Professors" HorizontalAlignment="Left" Margin="82,235,0,0" VerticalAlignment="Top" Height="97" Width="192" Click="Button_Click_2"/>
 
     </Grid>
 </Window>

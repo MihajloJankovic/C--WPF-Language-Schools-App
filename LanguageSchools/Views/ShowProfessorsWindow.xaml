@@ -13,12 +13,15 @@
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
        
-        <Menu Grid.Row="0"
+        <Menu Grid.Row="0" Margin="0,0,0,258" Grid.RowSpan="2"
               >
             <MenuItem Name="miAddProfessor" Height="30" Header="Add professor" Click="miAddProfessor_Click"></MenuItem>
             <MenuItem Name="miUpdateProfessor" Height="30" Header="Update professor" Click="miUpdateProfessor_Click"></MenuItem>
             <MenuItem x:Name="miDeleteProfessor" Height="30" Header="Delete professor" Click="DeleteProf"/>
             <MenuItem x:Name="miSC" Height="30" Header="Professor Meetings" Click="miSC_Click"/>
+            <TextBox TextWrapping="Wrap" Width="167" x:Name="sch" TextChanged="sch_TextChanged_1"/>
+            <ListBox x:Name="listbox1" Height="130"  Width="539"/>
+            <Button Content="Chose" Height="49" Width="129" RenderTransformOrigin="0.791,0.466" Click="Button_Click"/>
         </Menu>
 
         
@@ -27,7 +30,7 @@
                   Grid.Row="1" 
                   Name="dgProfessors" 
                   Width="800" 
-                  Margin="0,0,-8,0">
+                  Margin="4,0,-4,0" Height="257" VerticalAlignment="Bottom">
             
            
         </DataGrid>

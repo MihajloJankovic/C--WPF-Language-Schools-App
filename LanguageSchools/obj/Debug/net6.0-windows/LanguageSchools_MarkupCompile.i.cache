@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 C:\Users\janko\Documents\GitHub\SR3.2021.POP\LanguageSchools\App.xaml
-14269837729
+15158782488
 
-571128422974
+581901861713
 324-1316318639
-Home.xaml;MainWindow.xaml;Views\AddEditProfessorsWindow.xaml;Views\AddEditSchool.xaml;Views\AddEditStudent.xaml;Views\AddEvent.xaml;Views\EditEvent.xaml;Views\Login.xaml;Views\ProfessorHome.xaml;Views\Scheduler.xaml;Views\ShowProfessorsWindow.xaml;Views\ShowSchools.xaml;Views\StudentAll.xaml;Views\StudentHomexaml.xaml;
+Home.xaml;MainWindow.xaml;Views\AddEditProfessorsWindow.xaml;Views\AddEditSchool.xaml;Views\AddEditStudent.xaml;Views\AddEvent.xaml;Views\EditEvent.xaml;Views\Login.xaml;Views\ProfessorHome.xaml;Views\q1.xaml;Views\Scheduler.xaml;Views\ShowProfessorsWindow.xaml;Views\ShowSchools.xaml;Views\StudentAll.xaml;Views\StudentHomexaml.xaml;
 
-False
+True
 

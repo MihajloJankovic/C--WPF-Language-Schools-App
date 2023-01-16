@@ -9,8 +9,8 @@
     <Grid>
         <Button Content="Register" HorizontalAlignment="Left" Margin="550,74,0,0" VerticalAlignment="Top" Height="43" Width="71" Click="Button_Click"/>
         <Button Content="Login" HorizontalAlignment="Left" Margin="412,75,0,0" VerticalAlignment="Top" Height="43" Width="71" Click="Button_Click_1"/>
-        <Button Content="Schools" HorizontalAlignment="Left" Margin="48,179,0,0" VerticalAlignment="Top" Height="43" Width="184"/>
-        <Button Content="Professors" HorizontalAlignment="Left" Margin="51,273,0,0" VerticalAlignment="Top" Height="43" Width="184"/>
+        <Button Content="Schools" HorizontalAlignment="Left" Margin="48,179,0,0" VerticalAlignment="Top" Height="43" Width="184" Click="Button_Click_2"/>
+        <Button Content="Professors" HorizontalAlignment="Left" Margin="51,273,0,0" VerticalAlignment="Top" Height="43" Width="184" Click="Button_Click_3"/>
         <Image HorizontalAlignment="Left" Height="368" Margin="272,153,0,0" VerticalAlignment="Top" Width="463" RenderTransformOrigin="0.532,0.755">
             <Image.Source>
                 <BitmapImage DecodePixelWidth="300" UriSource="C:\Users\janko\Documents\GitHub\SR3.2021.POP\LanguageSchools\Resources\International-Flags.jpg" />

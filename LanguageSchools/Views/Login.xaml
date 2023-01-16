@@ -8,10 +8,10 @@
         Title="Login" Height="300" Width="323">
     <Grid>
         <Button Content="Login" HorizontalAlignment="Left" Margin="113,208,0,0" VerticalAlignment="Top" Height="32" Width="91" Click="Button_Click"/>
-        <Label Content="Jmbg :" RenderTransformOrigin="0.307,0.186" Margin="80,52,130,197"/>
-        <Label Content="Password :" RenderTransformOrigin="0.307,0.186" Margin="61,98,149,151"/>
         <TextBox HorizontalAlignment="Left" Margin="134,53,0,0" TextWrapping="Wrap" Name="JMBG" PreviewTextInput="NumberValidationTextBox"  VerticalAlignment="Top" Width="120"/>
         <PasswordBox HorizontalAlignment="Left"  Margin="137,97,0,0"  Name="sifra" VerticalAlignment="Top" Width="120"/>
+        <Label Content="JMBG :" HorizontalAlignment="Left" Margin="63,55,0,0" VerticalAlignment="Top"/>
+        <Label Content="Password :" HorizontalAlignment="Left" Margin="56,101,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

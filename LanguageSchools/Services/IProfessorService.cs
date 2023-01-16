@@ -17,6 +17,7 @@ namespace LanguageSchools.Services
         void Update(Professor pera);
         void Delete(string email);
         List<Professor> GetBySchool(String idd);
-  //      List<User> ListAllStudents();
+        //      List<User> ListAllStudents();
+        List<Professor> GetSch(String tekst);
     }
 }

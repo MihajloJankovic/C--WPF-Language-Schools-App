@@ -170,94 +170,96 @@ namespace LanguageSchools.Views
                     korisnik.UserType = EUserType.PROFESSOR;
 
 
-
-                    if (emailx.Text.Length > 3)
-                    {
-                        if(passwordx.Text.Length >= 1)
+                    
+                        if (emailx.Text.Length > 3)
                         {
-                            if(firstnamex.Text.Length > 3)
+                            if (passwordx.Text.Length >= 1)
                             {
-                                if(lastnamex.Text.Length > 3)
+                                if (firstnamex.Text.Length > 3)
                                 {
-                                    if(listbox1.SelectedItems.Count > 0)
+                                    if (lastnamex.Text.Length > 3)
                                     {
-
-                                        SqlConnection con = new SqlConnection("Data Source=MIHAJLO;Initial Catalog=baza_POP;Integrated Security=True");
-                                        con.Open();
-                                        SqlCommand cmd = new SqlCommand("SELECT max(id) FROM Address;", con);
-                                        SqlDataReader reader = cmd.ExecuteReader();
-
-
-                                        while (reader.Read())
+                                        if (listbox1.SelectedItems.Count > 0)
                                         {
-                                            korisnik.Address.Id = (reader.GetInt32(0)) + 1;
-                                        }
 
-                                        // Call Close when done reading.
-                                        reader.Close();
-                                        Professor pera = new Professor();
-                                        pera.User = korisnik;
-                                        pera.SchoolT = new School();
-                                        List<School> skola = new List<School>();
-                                        skola.AddRange(Data.Instance.SchoolService.GetAll());
-                                        foreach (School h in skola)
-                                        {
-                                            if (h.Name == cbSchool.SelectedItem.ToString())
+                                            SqlConnection con = new SqlConnection("Data Source=MIHAJLO;Initial Catalog=baza_POP;Integrated Security=True");
+                                            con.Open();
+                                            SqlCommand cmd = new SqlCommand("SELECT max(id) FROM Address;", con);
+                                            SqlDataReader reader = cmd.ExecuteReader();
+
+
+                                            while (reader.Read())
                                             {
-                                                pera.SchoolT = h;
-
+                                                korisnik.Address.Id = (reader.GetInt32(0)) + 1;
                                             }
+
+                                            // Call Close when done reading.
+                                            reader.Close();
+                                            Professor pera = new Professor();
+                                            pera.User = korisnik;
+                                            pera.SchoolT = new School();
+                                            List<School> skola = new List<School>();
+                                            skola.AddRange(Data.Instance.SchoolService.GetAll());
+                                            foreach (School h in skola)
+                                            {
+                                                if (h.Name == cbSchool.SelectedItem.ToString())
+                                                {
+                                                    pera.SchoolT = h;
+
+                                                }
+                                            }
+
+
+                                            List<Meeting> listaaa = new List<Meeting>();
+                                            pera.Meetings = listaaa;
+                                            List<Language> jezici = new List<Language>();
+                                            List<Language> jezic = new List<Language>();
+                                            jezici.AddRange(Data.Instance.languageRepository.GetAll());
+                                            List<String> jezz = new List<String>();
+                                            foreach (String element in listbox1.SelectedItems)
+                                            {
+                                                jezz.Add(element);
+                                            }
+                                            foreach (String ele in jezz)
+                                            {
+                                                Language jez = jezici.Find(e => e.Jezik == ele);
+                                                jezic.Add(jez);
+                                            }
+                                            List<Language> temp = new List<Language>();
+                                            pera.Languages = temp;
+                                            pera.Languages.AddRange(jezic);
+                                            Data.Instance.ProfessorService.Add(pera);
+
+                                            DialogResult = true;
+                                            Close();
                                         }
-
-
-                                        List<Meeting> listaaa = new List<Meeting>();
-                                        pera.Meetings = listaaa;
-                                        List<Language> jezici = new List<Language>();
-                                        List<Language> jezic = new List<Language>();
-                                        jezici.AddRange(Data.Instance.languageRepository.GetAll());
-                                        List<String> jezz = new List<String>();
-                                        foreach (String element in listbox1.SelectedItems)
+                                        else
                                         {
-                                            jezz.Add(element);
+                                            MessageBox.Show("Chose at least 1 language");
                                         }
-                                        foreach(String ele in jezz)
-                                        {
-                                            Language jez = jezici.Find(e => e.Jezik == ele);
-                                            jezic.Add(jez);
-                                        }
-                                        List<Language> temp = new List<Language>();
-                                        pera.Languages = temp;
-                                        pera.Languages.AddRange(jezic);
-                                        Data.Instance.ProfessorService.Add(pera);
 
-                                        DialogResult = true;
-                                        Close();
                                     }
                                     else
                                     {
-                                        MessageBox.Show("Chose at least 1 language");
+                                        MessageBox.Show("City name too short");
                                     }
-
                                 }
                                 else
                                 {
-                                    MessageBox.Show("City name too short");
+                                    MessageBox.Show("Contry name too short");
                                 }
                             }
                             else
                             {
-                                MessageBox.Show("Contry name too short");
+                                MessageBox.Show("Enter street number");
                             }
                         }
                         else
                         {
-                            MessageBox.Show("Enter street number");
+                            MessageBox.Show("street name too short");
                         }
-                    }
-                    else
-                    {
-                        MessageBox.Show("street name too short");
-                    }
+                   
+                    
                 }
             }
             if (g == 0)
@@ -353,76 +355,84 @@ namespace LanguageSchools.Views
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if(txtEmail.Text.Length > 5)
+            if (Data.Instance.meetingRepository.jmbg(txtJMBG.Text) == false ^ peraa is not null)
             {
-                if (txtPassword.Text.Length > 5)
+                if (txtEmail.Text.Length > 5)
                 {
-                    if (txtFirstName.Text.Length > 3)
+                    if (txtPassword.Text.Length > 5)
                     {
-                        if (txtLastName.Text.Length > 3)
+                        if (txtFirstName.Text.Length > 3)
                         {
-                            if (txtJMBG.Text.Length > 10)
+                            if (txtLastName.Text.Length > 3)
                             {
-                                passwordx.Visibility = Visibility.Visible;
-                                emailx.Visibility = Visibility.Visible;
-                                lastnamex.Visibility = Visibility.Visible;
-                                firstnamex.Visibility = Visibility.Visible;
-                                Street__.Visibility = Visibility.Visible;
-                                Number_.Visibility = Visibility.Visible;
-                                Country.Visibility = Visibility.Visible;
-                                City.Visibility = Visibility.Visible;
-                                next.Visibility = Visibility.Hidden;
-                                btnSave.Visibility = Visibility.Visible;
-                                cbSchool.Visibility = Visibility.Visible;   
-                                listbox1.Visibility = Visibility.Visible;
-
-                                lblEmail.Visibility = Visibility.Hidden;
-                                lblFirstName.Visibility = Visibility.Hidden;
-                                lblGender.Visibility = Visibility.Hidden;
-                                lblJMBG.Visibility = Visibility.Hidden;
-                                lblLastName.Visibility = Visibility.Hidden;
-                                lblPassword.Visibility = Visibility.Hidden;
-                                txtEmail.Visibility = Visibility.Hidden;
-                                txtFirstName.Visibility = Visibility.Hidden;
-                                txtJMBG.Visibility = Visibility.Hidden;
-                                txtLastName.Visibility = Visibility.Hidden;
-                                txtPassword.Visibility = Visibility.Hidden;
-                                cbGender.Visibility = Visibility.Hidden;
-                                List<School> skola = new List<School>();
-                                
-                                skola.AddRange(Data.Instance.SchoolService.GetAll());
-                                List<String> skole = new List<String>();
-                                foreach (School y in skola)
+                                if (txtJMBG.Text.Length > 10)
                                 {
-                                    skole.Add(y.Name);
+                                    passwordx.Visibility = Visibility.Visible;
+                                    emailx.Visibility = Visibility.Visible;
+                                    lastnamex.Visibility = Visibility.Visible;
+                                    firstnamex.Visibility = Visibility.Visible;
+                                    Street__.Visibility = Visibility.Visible;
+                                    Number_.Visibility = Visibility.Visible;
+                                    Country.Visibility = Visibility.Visible;
+                                    City.Visibility = Visibility.Visible;
+                                    next.Visibility = Visibility.Hidden;
+                                    btnSave.Visibility = Visibility.Visible;
+                                    cbSchool.Visibility = Visibility.Visible;
+                                    listbox1.Visibility = Visibility.Visible;
+
+                                    lblEmail.Visibility = Visibility.Hidden;
+                                    lblFirstName.Visibility = Visibility.Hidden;
+                                    lblGender.Visibility = Visibility.Hidden;
+                                    lblJMBG.Visibility = Visibility.Hidden;
+                                    lblLastName.Visibility = Visibility.Hidden;
+                                    lblPassword.Visibility = Visibility.Hidden;
+                                    txtEmail.Visibility = Visibility.Hidden;
+                                    txtFirstName.Visibility = Visibility.Hidden;
+                                    txtJMBG.Visibility = Visibility.Hidden;
+                                    txtLastName.Visibility = Visibility.Hidden;
+                                    txtPassword.Visibility = Visibility.Hidden;
+                                    cbGender.Visibility = Visibility.Hidden;
+                                    List<School> skola = new List<School>();
+
+                                    skola.AddRange(Data.Instance.SchoolService.GetAll());
+                                    List<String> skole = new List<String>();
+                                    foreach (School y in skola)
+                                    {
+                                        skole.Add(y.Name);
+                                    }
+                                    cbSchool.ItemsSource = skole;
                                 }
-                                cbSchool.ItemsSource = skole;
+                                else
+                                {
+                                    MessageBox.Show("JMBG too Short!");
+                                }
+
                             }
                             else
                             {
-                                MessageBox.Show("JMBG too Short!");
+                                MessageBox.Show("LastName too short!");
                             }
-
                         }
                         else
                         {
-                            MessageBox.Show("LastName too short!");
+                            MessageBox.Show("Name to short!");
                         }
                     }
                     else
                     {
-                        MessageBox.Show("Name to short!");
+                        MessageBox.Show("Password too short!");
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Password too short!");
+                    MessageBox.Show("Email too short!");
                 }
             }
             else
             {
-                MessageBox.Show("Email too short!");
+                MessageBox.Show("JMBG allready in use");
             }
+             
         }
 
         private void canc_Click(object sender, RoutedEventArgs e)

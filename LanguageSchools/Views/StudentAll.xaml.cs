@@ -98,7 +98,7 @@ namespace LanguageSchools.Views
             student.MeetingList = Data.Instance.meetingRepository.getByStudent(ID);
             if (student != null)
             {
-                var addEditProfessorWindow = new Scheduler(student);
+                var addEditProfessorWindow = new Scheduler(student,true);
 
                 var successful = addEditProfessorWindow.ShowDialog();
 
